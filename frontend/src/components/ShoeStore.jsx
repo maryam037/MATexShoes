@@ -386,7 +386,7 @@ const ShoeStore = () => {
           </p>
           <button
             onClick={() => window.scrollTo({ top: 500, behavior: 'smooth' })}
-            className="px-6 py-3 bg-gray-700 hover:bg-gray-600 rounded-md font-semibold text-white transition duration-300"
+            className="px-6 py-3 bg-gray-500 hover:bg-gray-600 rounded-md font-semibold text-white transition duration-300"
           >
             Shop Now
           </button>
