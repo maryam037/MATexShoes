@@ -1,0 +1,192 @@
+{
+    "shoes": [
+      {
+        "id": 1,
+        "name": "Black Long Boats",
+        "brand": "White stag",
+        "price": 3500,
+        "sizes": [7.5],
+        "color": "Black",
+        "description": "100% Faux Suede | Imported | Synthetic material | 8/10 Condition",
+        "image": "/api/placeholder/400/300"
+      },
+      {
+        "id": 2,
+        "name": "Black Sandals with Studs",
+        "brand": "Merry Scott",
+        "price": 1500,
+        "sizes": [38],
+        "color": "Black",
+        "description": " Imported | 6/10 Condition",
+        "image": "/api/placeholder/400/300"
+      },
+      {
+        "id": 3,
+        "name": "Chained High sole Women's Loafer",
+        "brand": "ECS",
+        "price": 3500,
+        "sizes": [38],
+        "color": "Gray/Green",
+        "description": "New Shoes with Box | 10/10 Condition",
+        "image": "/api/placeholder/400/300"
+      },
+      {
+        "id": 4,
+        "name": "Sneakers",
+        "brand": "Unknown",
+        "price": 500,
+        "sizes": [39],
+        "color": "Sky Blue",
+        "description": "Sneakers| 5/10 Condition",
+        "image": "/api/placeholder/400/300"
+      },
+      {
+        "id": 5,
+        "name": "Sneakers ",
+        "brand": "Turkish Brand",
+        "price": 1500,
+        "sizes": [39],
+        "color": "Beige/Golden/Brown",
+        "description": "Sneakers | 8/10 Condition",
+        "image": "/api/placeholder/400/300"
+      },
+      {
+        "id": 6,
+        "name": "High Top Converse Chuck Taylor",
+        "brand": "Converse",
+        "price": 2500,
+        "sizes": [39,38],
+        "color": "Purple/ Red rust",
+        "description": "Check pattern inside | 9/10 Condition",
+        "image": "/api/placeholder/400/300"
+      },
+  {
+        "id": 7,
+        "name": "Sneakers",
+        "brand": "Pull and bear",
+        "price": 1000,
+        "sizes": [38],
+        "color": "White",
+        "description": "Will be shipped after a wash | 7/10 Condition",
+        "image": "/api/placeholder/400/300"
+      },
+  {
+        "id": 8,
+        "name": "Chunky Boots",
+        "brand": "Outfitters ",
+        "price": 3500,
+        "sizes": [38,39],
+        "color": "Black",
+        "description": "Black shiny leather | High quality | 9.5/10 Condition",
+        "image": "/api/placeholder/400/300"
+      },
+  {
+        "id": 9,
+        "name": "Formal penny Loafers",
+        "brand": "Unknown ",
+        "price": 2500,
+        "sizes": [39],
+        "color": "Black",
+        "description": "Black neat leather | High quality | 9/10 Condition",
+        "image": "/api/placeholder/400/300"
+      },
+  {
+        "id": 10,
+        "name": "Formal penny Loafers",
+        "brand": "ECCO ",
+        "price": 2500,
+        "sizes": [37,38],
+        "color": "Brown",
+        "description": "Brown shiny leather | High quality | 9/10 Condition ",
+        "image": "/api/placeholder/400/300"
+      },
+ {
+        "id": 11,
+        "name": "Loafers",
+        "brand": "Aerosoles",
+        "price": 800,
+        "sizes": [7],
+        "color": "Sky blue",
+        "description": " Suede | High comfort | 7/10 Condition ",
+        "image": "/api/placeholder/400/300"
+      },
+ {
+        "id": 12,
+        "name": "Vans Sk8-Hi Sneakers Orignal",
+        "brand": "Vans",
+        "price": 4000,
+        "sizes": [38],
+        "color": "White",
+        "description": " Orignal | Light stains | 8/10 Condition ",
+        "image": "/api/placeholder/400/300"
+      },
+ {
+        "id": 13,
+        "name": "Nike Court Borough Mid 2 Orignal",
+        "brand": "Nike",
+        "price": 4000,
+        "sizes": [37.5],
+        "color": "White",
+        "description": " Orignal | Light stains | 8/10 Condition ",
+        "image": "/api/placeholder/400/300"
+      },
+
+ {
+        "id": 14,
+        "name": "LC Waikiki Leather Long boots Orignal",
+        "brand": "LC Waikiki",
+        "price": 6000,
+        "sizes": [39],
+        "color": "Black",
+        "description": " Orignal | 100% Comfort | Winters snow proof, strong Grip | 9/10 Condition ",
+        "image": "/api/placeholder/400/300"
+      },
+ {
+        "id": 15,
+        "name": "Suede Long boots Orignal",
+        "brand": "Decathon Turkey",
+        "price": 6000,
+        "sizes": [38],
+        "color": "Brown",
+        "description": " Orignal Suede | 100% Comfort | Strong Grip | 9/10 Condition ",
+        "image": "/api/placeholder/400/300"
+      },
+ {
+        "id": 16,
+        "name": "Formal Heels",
+        "brand": "ECS",
+        "price": 800,
+        "sizes": [36,37],
+        "color": "Grey/Black",
+        "description": " 100% Comfort | Small heels | 9/10 Condition ",
+        "image": "/api/placeholder/400/300"
+      },
+ {
+        "id": 17,
+        "name": "Formal Heels",
+        "brand": "Borjan",
+        "price": 2500,
+        "sizes": [37],
+        "color": "Black",
+        "description": " Black shiny high quality leather | High heels | 9/10 Condition ",
+        "image": "/api/placeholder/400/300"
+      },
+ {
+        "id": 18,
+        "name": "Furr Slippers",
+        "brand": "Unknown",
+        "price": 1000,
+        "sizes": [38,39],
+        "color": "Black/Grey",
+        "description": " Casual Furr slippers | 100% Comfort | 9/10 Condition ",
+        "image": "/api/placeholder/400/300"
+      }
+
+
+
+
+
+
+
+    ]
+  }
