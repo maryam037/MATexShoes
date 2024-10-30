@@ -1,8 +1,6 @@
-import React, { useState, useRef } from "react";
-import { initialShoes } from './UI/shoes.js'; // Adjust the path if needed
-import ProductDetails from "./UI/ProductDetails.jsx"; // Update this if needed
-
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"; // Ensure this path is correct
+import ProductDetails from "./UI/ProductDetails.jsx";
+import React, { useState, useRef, useEffect } from "react";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import FeaturedShoes from './UI/FeaturedShoes.jsx';
 import CheckoutPage from './UI/CheckoutPage.jsx';
 import { ShoppingCart, Menu, X } from "lucide-react";
@@ -19,15 +17,64 @@ import {
 } from "@/components/ui/alert-dialog";
 
 const ShoeStore = () => {
+  // Sample data as fallback
+  const sampleShoes = [
+    {
+      id: 1,
+      name: "Nike Air Max",
+      brand: "Nike",
+      price: 2500,
+      description: "Classic Nike sneakers in excellent condition",
+      image: "/src/assets/shoes/nike-air-max.jpg"
+    },
+    {
+      id: 2,
+      name: "Vans Old Skool",
+      brand: "Vans",
+      price: 1800,
+      description: "Vintage Vans skateboarding shoes",
+      image: "/src/assets/shoes/vans-old-skool.jpg"
+    },
+    {
+      id: 3,
+      name: "LC Waikiki Casual",
+      brand: "LC Waikiki",
+      price: 900,
+      description: "Comfortable casual shoes",
+      image: "/src/assets/shoes/lc-waikiki-casual.jpg"
+    }
+  ];
+
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [cart, setCart] = useState([]);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [selectedBrand, setSelectedBrand] = useState('All');
   const [priceRange, setPriceRange] = useState('All');
-  const [shoes] = useState(initialShoes);
-  const mainRef = useRef(null); // Add ref for main section
+  const mainRef = useRef(null);
   const [showCheckout, setShowCheckout] = useState(false);
+  const [shoes, setShoes] = useState(sampleShoes); // Initialize with sample data
 
+  // Modified useEffect to handle fetch errors gracefully
+  useEffect(() => {
+    const fetchShoes = async () => {
+      try {
+        const response = await fetch('http://localhost:3001/api/shoes');
+        if (!response.ok) {
+          throw new Error('Failed to fetch shoes');
+        }
+        const data = await response.json();
+        setShoes(data);
+      } catch (error) {
+        console.error('Failed to fetch shoes:', error);
+        // Keep using sample data if fetch fails
+        setShoes(sampleShoes);
+      }
+    };
+
+    fetchShoes();
+  }, []);
+
+  // Rest of your existing functions...
   const scrollToCollection = () => {
     if (mainRef.current) {
       mainRef.current.scrollIntoView({ behavior: 'smooth' });
@@ -45,11 +92,10 @@ const ShoeStore = () => {
   const calculateTotal = () => {
     return cart.reduce((total, item) => total + item.price, 0).toLocaleString();
   };
- 
+
   const handleViewProduct = (product) => {
     setShowCheckout(false);
     setSelectedProduct(product);
-    
   };
 
   const handleGoBack = () => {
@@ -61,6 +107,11 @@ const ShoeStore = () => {
     }
   };
 
+  const isSoldOut = (shoeId) => {
+    return [8, 12, 13, 14, 15, 21, 23].includes(shoeId);
+  };
+
+  // Updated filtering logic to handle empty data
   const filteredShoes = shoes.filter(shoe => {
     const brandMatch = selectedBrand === 'All' || shoe.brand === selectedBrand;
     const priceMatch = 
@@ -196,74 +247,94 @@ const ShoeStore = () => {
                 Complete Collection
               </h1>
             </div>
-
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {filteredShoes.map((shoe) => (
-  <Card key={shoe.id} className="group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden">
-    <div className="relative">
-      <CardHeader className="p-0">
-        <img 
-          src={shoe.image} 
-          alt={shoe.name} 
-          className="w-full h-48 object-contain group-hover:scale-105 transition-transform duration-300"
-        />
-     
-{[17, 14, 13, 12, 9, 8, 6, 3].includes(shoe.id) && (
-  <div className="absolute top-2 left-2">
-    <span className="bg-gradient-to-r from-teal-500 to-pink-500 text-white px-3 py-1 rounded-full text-sm">
-      Featured
-    </span>
-  </div>
-)}
-      </CardHeader>
-    </div>
-                  
-                  <CardContent className="p-4">
-                    <CardTitle className="text-lg font-bold truncate">{shoe.name}</CardTitle>
-                    <CardDescription className="mt-2">
-                      <p className="text-gray-600 truncate">{shoe.description}</p>
-                      <p className="text-gray-600">Brand: {shoe.brand}</p>
-                      <p className="font-bold text-lg mt-2 text-teal-600">Rs. {shoe.price}</p>
-                    </CardDescription>
-                  </CardContent>
-                  
-                  <CardFooter className="p-4 pt-0 flex gap-2">
-                    <button
-                      onClick={() => handleViewProduct(shoe)}
-                      className="flex-1 bg-gray-100 text-gray-800 py-2 rounded hover:bg-gray-200 transition-colors"
+      {filteredShoes.map((shoe) => (
+        <Card key={shoe.id} className="group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden">
+          <div className="relative">
+            <CardHeader className="p-0">
+              <img 
+                src={shoe.image} 
+                alt={shoe.name} 
+                className={`w-full h-48 object-contain group-hover:scale-105 transition-transform duration-300 ${
+                  isSoldOut(shoe.id) ? 'opacity-50' : ''
+                }`}
+              />
+              {[17, 14, 13, 12, 9, 8, 6, 3].includes(shoe.id) && (
+                <div className="absolute top-2 left-2">
+                  <span className="bg-gradient-to-r from-teal-500 to-pink-500 text-white px-3 py-1 rounded-full text-sm">
+                    Featured
+                  </span>
+                </div>
+              )}
+              {isSoldOut(shoe.id) && (
+                <div className="absolute top-2 right-2">
+                  <span className="bg-red-500 text-white px-3 py-1 rounded-full text-sm">
+                    Sold Out
+                  </span>
+                </div>
+              )}
+            </CardHeader>
+          </div>
+          
+          <CardContent className="p-4">
+            <CardTitle className="text-lg font-bold truncate">{shoe.name}</CardTitle>
+            <CardDescription className="mt-2">
+              <p className="text-gray-600 truncate">{shoe.description}</p>
+              <p className="text-gray-600">Brand: {shoe.brand}</p>
+              <p className="font-bold text-lg mt-2 text-teal-600">Rs. {shoe.price}</p>
+            </CardDescription>
+          </CardContent>
+          
+          <CardFooter className="p-4 pt-0 flex gap-2">
+            <button
+              onClick={() => handleViewProduct(shoe)}
+              className="flex-1 bg-gray-100 text-gray-800 py-2 rounded hover:bg-gray-200 transition-colors"
+            >
+              View Details
+            </button>
+            <AlertDialog>
+              <AlertDialogTrigger asChild>
+                <button 
+                  className={`flex-1 py-2 rounded transition-colors ${
+                    isSoldOut(shoe.id)
+                      ? 'bg-gray-400 text-white cursor-not-allowed'
+                      : 'bg-black text-white hover:bg-gray-800'
+                  }`}
+                >
+                  Add to Cart
+                </button>
+              </AlertDialogTrigger>
+              <AlertDialogContent>
+                <AlertDialogHeader>
+                  <AlertDialogTitle>
+                    {isSoldOut(shoe.id) ? 'Item Sold Out' : 'Add to Cart'}
+                  </AlertDialogTitle>
+                  <AlertDialogDescription>
+                    {isSoldOut(shoe.id)
+                      ? "We're sorry, this item is currently sold out."
+                      : `Do you want to add ${shoe.name} to your cart?`
+                    }
+                  </AlertDialogDescription>
+                </AlertDialogHeader>
+                <AlertDialogFooter>
+                  <AlertDialogCancel>Close</AlertDialogCancel>
+                  {!isSoldOut(shoe.id) && (
+                    <AlertDialogAction 
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        addToCart(shoe);
+                      }}
                     >
-                      View Details
-                    </button>
-                    <AlertDialog>
-                      <AlertDialogTrigger asChild>
-                        <button className="flex-1 bg-black text-white py-2 rounded hover:bg-gray-800 transition-colors">
-                          Add to Cart
-                        </button>
-                      </AlertDialogTrigger>
-                      <AlertDialogContent>
-                        <AlertDialogHeader>
-                          <AlertDialogTitle>Add to Cart</AlertDialogTitle>
-                          <AlertDialogDescription>
-                            Do you want to add {shoe.name} to your cart?
-                          </AlertDialogDescription>
-                        </AlertDialogHeader>
-                        <AlertDialogFooter>
-                          <AlertDialogCancel>Cancel</AlertDialogCancel>
-                          <AlertDialogAction 
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              addToCart(shoe);
-                            }}
-                          >
-                            Add to Cart
-                          </AlertDialogAction>
-                        </AlertDialogFooter>
-                      </AlertDialogContent>
-                    </AlertDialog>
-                  </CardFooter>
-                </Card>
-              ))}
-            </div>
+                      Add to Cart
+                    </AlertDialogAction>
+                  )}
+                </AlertDialogFooter>
+              </AlertDialogContent>
+            </AlertDialog>
+          </CardFooter>
+        </Card>
+      ))}
+    </div>
           </main>
 
     </>
