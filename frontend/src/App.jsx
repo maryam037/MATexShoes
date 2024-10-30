@@ -1,12 +1,15 @@
-import ShoeStore from './components/ShoeStore'
+// App.jsx
+
+import React from 'react';
+import ShoeStore from './components/ShoeStore.jsx';
 import './index.css';
 
 function App() {
   return (
-    <div>
+    <div className="bg-gray-100 min-h-screen">
       <ShoeStore />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

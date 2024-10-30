@@ -1,0 +1,162 @@
+import React, { useState } from 'react';
+import { ArrowLeft, Heart, Share2 } from 'lucide-react';
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
+
+const ProductDetails = ({ shoe, onGoBack, onAddToCart, onCheckoutPage }) => {
+  
+  const [selectedImage, setSelectedImage] = useState(0);
+
+
+  if (!shoe) return null;
+
+  const getImages = () => {
+    return [shoe.image || "/api/placeholder/400/300", ...shoe.additionalImages || []];
+  };
+
+  const images = getImages();
+
+  const handleShare = async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: shoe.name,
+          text: `Check out this ${shoe.name} at MA Tex`,
+          url: window.location.href,
+        });
+      } catch (error) {
+        console.error('Error sharing:', error);
+      }
+    }
+  };
+
+  const handleProceedToCheckout = () => {
+    onCheckoutPage(true);
+  };
+
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100">
+      <div className="pt-20 px-4 max-w-6xl mx-auto">
+        <button
+          onClick={onGoBack}
+          className="flex items-center text-white py-3 px-4 rounded-lg transition-all duration-300 
+             bg-gradient-to-r from-teal-500 to-pink-500 hover:from-teal-600 hover:to-pink-600 
+             shadow-lg transform hover:-translate-y-1 mb-6"
+        >
+          <ArrowLeft className="w-5 h-5 mr-2" />
+        </button>
+        <h1 className="text-5xl font-bold bg-gradient-to-r from-teal-500 to-pink-500 bg-clip-text text-transparent mb-8 text-center">
+          Product Details
+        </h1>
+        <Card className="shadow-lg hover:shadow-xl transition-shadow duration-300">
+          <CardContent className="p-6">
+            <CardHeader className="text-center">
+              <CardTitle className="text-2xl font-bold text-gray-900">{shoe.name}</CardTitle>
+            </CardHeader>
+
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              <div className="lg:col-span-2">
+                <div className="relative">
+                  <img
+                    src={images[selectedImage]}
+                    alt={`${shoe.name} - View ${selectedImage + 1}`}
+                    className="w-full h-96 object-contain rounded-lg"
+                  />
+                  <div className="absolute top-4 right-4 flex space-x-2">
+                    <button className="p-2 bg-white rounded-full shadow-lg hover:bg-gray-100">
+                      <Heart className="w-5 h-5 text-gray-600" />
+                    </button>
+                    <button 
+                      onClick={handleShare}
+                      className="p-2 bg-white rounded-full shadow-lg hover:bg-gray-100"
+                    >
+                      <Share2 className="w-5 h-5 text-gray-600" />
+                    </button>
+                  </div>
+                </div>
+
+                {/* Thumbnail Images */}
+                <div className="flex gap-4 justify-center mt-4">
+                  {images.map((img, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setSelectedImage(index)}
+                      className={`relative w-24 h-24 rounded-lg overflow-hidden ${
+                        selectedImage === index 
+                          ? 'ring-2 ring-teal-500 ring-offset-2' 
+                          : 'hover:opacity-75'
+                      }`}
+                    >
+                      <img
+                        src={img}
+                        alt={`${shoe.name} - Thumbnail ${index + 1}`}
+                        className="w-full h-full object-contain"
+                      />
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                <div className="text-xl font-bold text-teal-500 text-center border-b-2 border-teal-500 pb-2">
+                  Rs. {shoe.price.toLocaleString()}
+                </div>
+                <div className="space-y-2 text-gray-600">
+                  <h2 className="text-lg font-semibold mb-2">Product Details</h2>
+                  <p><span className="font-medium">Brand:</span> {shoe.brand}</p>
+                  <p><span className="font-medium">Color:</span> {shoe.color}</p>
+                  <p><span className="font-medium">Available Sizes:</span> {shoe.sizes.join(', ')}</p>
+                  <p><span className="font-medium">Condition:</span> {shoe.description}</p>
+                </div>
+
+                <div className="space-y-4">
+                  <AlertDialog>
+                    <AlertDialogTrigger asChild>
+                      <button className="w-full bg-black text-white py-3 rounded-lg hover:bg-gray-800 transition-colors">
+                        Add to Cart
+                      </button>
+                    </AlertDialogTrigger>
+                    <AlertDialogContent>
+                      <AlertDialogHeader>
+                        <AlertDialogTitle>Add to Cart</AlertDialogTitle>
+                        <AlertDialogDescription>
+                          Do you want to add {shoe.name} to your cart?
+                        </AlertDialogDescription>
+                      </AlertDialogHeader>
+                      <AlertDialogFooter>
+                        <AlertDialogCancel>Cancel</AlertDialogCancel>
+                        <AlertDialogAction onClick={() => onAddToCart(shoe)}>
+                          Add to Cart
+                        </AlertDialogAction>
+                      </AlertDialogFooter>
+                    </AlertDialogContent>
+                  </AlertDialog>
+
+                  <button
+                    onClick={handleProceedToCheckout}
+                    className="w-full py-4 rounded-lg text-white font-medium transition-all duration-300 
+                    bg-gradient-to-r from-teal-500 to-pink-500 hover:from-teal-600 hover:to-pink-600 transform hover:-translate-y-1"
+                  >
+                    Proceed to Checkout
+                  </button>
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    </div>
+  );
+};
+
+export default ProductDetails;
