@@ -19,24 +19,27 @@ const CheckoutPage = ({ cart, onClose, removeFromCart, onViewProduct }) => {
   const calculateTotal = () => {
     return cart.reduce((total, item) => total + item.price, 0);
   };
+// In CheckoutPage.jsx, modify the handleSubmit function
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  setIsSubmitting(true);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    setShowSuccess(true);
-    setIsSubmitting(false);
-    
-    // Reset after showing success message
-    setTimeout(() => {
-      setShowSuccess(false);
-      onClose();
-    }, 2000);
-  };
+  // Simulate API call
+  await new Promise(resolve => setTimeout(resolve, 1500));
 
+  // Mark products as sold and reset cart
+  markProductsAsSold(cart);
+
+  setShowSuccess(true);
+  setIsSubmitting(false);
+
+  // Reset and redirect after showing success message
+  setTimeout(() => {
+    setShowSuccess(false);
+    setShowCheckout(false); // Close checkout page
+    alert('Your order has been successfully placed!'); // Show success alert
+  }, 2000);
+};
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100">
       <div className="pt-20 px-4 max-w-6xl mx-auto">

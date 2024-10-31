@@ -54,9 +54,16 @@ const ShoeStore = () => {
   const [showCheckout, setShowCheckout] = useState(false);
   const [shoes, setShoes] = useState(sampleShoes);
 
-// Add this function to update shoes
-const updateShoesAfterOrder = (updatedShoes) => {
+// In ShoeStore.jsx, add this new function
+const markProductsAsSold = (cartItems) => {
+  const updatedShoes = shoes.map(shoe => {
+    if (cartItems.some(cartItem => cartItem.id === shoe.id)) {
+      return { ...shoe, isSoldOut: true };
+    }
+    return shoe;
+  });
   setShoes(updatedShoes);
+  setCart([]); // Reset cart
 };
 
   useEffect(() => {
@@ -112,9 +119,9 @@ const updateShoesAfterOrder = (updatedShoes) => {
   };
 
   const isSoldOut = (shoeId) => {
-    return [8, 12, 13, 14, 15, 21, 23].includes(shoeId);
+    const shoe = shoes.find(s => s.id === shoeId);
+    return shoe?.isSoldOut || [8, 12, 13, 14, 15, 21, 23].includes(shoeId);
   };
-
   // Updated filtering logic to handle empty data
   const filteredShoes = shoes.filter(shoe => {
     const brandMatch = selectedBrand === 'All' || shoe.brand === selectedBrand;
@@ -184,6 +191,8 @@ const updateShoesAfterOrder = (updatedShoes) => {
           onClose={() => setShowCheckout(false)}
           removeFromCart={removeFromCart}
           onViewProduct={handleViewProduct}
+          markProductsAsSold={markProductsAsSold} // Add this prop
+  setShowCheckout={setShowCheckout}
         />
       ) : selectedProduct ? (
         <ProductDetails

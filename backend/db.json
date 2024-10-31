@@ -15,7 +15,7 @@
         "/src/assets/longb2.jpg",
         "/src/assets/longb3.jpg"
       ],
-      "isSoldOut": true
+      "isSoldOut": false
     },
     {
       "id": 2,
@@ -32,7 +32,7 @@
         "/src/assets/sandals2.jpg",
         "/src/assets/sandals3.jpg"
       ],
-      "isSoldOut": true
+      "isSoldOut": false
     },
     {
       "id": 3,
@@ -49,7 +49,7 @@
         "/src/assets/green2.jpg",
         "/src/assets/green3.jpg"
       ],
-      "isSoldOut": true
+      "isSoldOut": false
     },
     {
       "id": 4,
@@ -101,7 +101,7 @@
         "/src/assets/purple2.jpg",
         "/src/assets/purple3.jpg"
       ],
-      "isSoldOut": true
+      "isSoldOut": false
     },
     {
       "id": 7,
@@ -118,7 +118,7 @@
         "/src/assets/white2.jpg",
         "/src/assets/white3.jpg"
       ],
-      "isSoldOut": true
+      "isSoldOut": false
     },
     {
       "id": 8,
@@ -422,172 +422,5 @@
       "isSoldOut": false
     }
   ],
-  "orders": [
-    {
-      "id": 1730328466557,
-      "items": [
-        {
-          "id": 1,
-          "name": "Black Long Boots",
-          "brand": "White stag",
-          "price": 3500,
-          "sizes": [
-            7.5
-          ],
-          "color": "Black",
-          "description": "100% Faux Suede | Imported | Synthetic material | 8/10 Condition",
-          "image": "/src/assets/longb1.jpg",
-          "additionalImages": [
-            "/src/assets/longb2.jpg",
-            "/src/assets/longb3.jpg"
-          ],
-          "isSoldOut": false,
-          "cartId": 1730328452718
-        }
-      ],
-      "orderDetails": {
-        "name": "Maryam Ashfaq",
-        "email": "momoashfaq@gmail.com",
-        "phone": "+925250505",
-        "address": "House No 4 , Street 31-A Sector I Bahria Town Phase 8 Rawalpindi",
-        "city": "Rawalpindi",
-        "notes": "",
-        "paymentMethod": "COD"
-      },
-      "createdAt": "2024-10-30T22:47:46.557Z"
-    },
-    {
-      "id": 1730331067955,
-      "items": [
-        {
-          "id": 3,
-          "name": "Chained High Sole Women's Loafer",
-          "brand": "ECS",
-          "price": 3500,
-          "sizes": [
-            38
-          ],
-          "color": "Gray/Green",
-          "description": "New Shoes with Box | 10/10 Condition",
-          "image": "/src/assets/green1.jpg",
-          "additionalImages": [
-            "/src/assets/green2.jpg",
-            "/src/assets/green3.jpg"
-          ],
-          "isSoldOut": false,
-          "cartId": 1730331058560
-        }
-      ],
-      "orderDetails": {
-        "name": "Maryam Ashfaq",
-        "email": "momoashfaq@gmail.com",
-        "phone": "+925250505",
-        "address": "House No 4 , Street 31-A Sector I Bahria Town Phase 8 Rawalpindi",
-        "city": "Rawalpindi",
-        "notes": "",
-        "paymentMethod": "COD"
-      },
-      "createdAt": "2024-10-30T23:31:07.955Z"
-    },
-    {
-      "id": 1730332800727,
-      "items": [
-        {
-          "id": 6,
-          "name": "High Top Converse Chuck Taylor",
-          "brand": "Converse",
-          "price": 2500,
-          "sizes": [
-            39,
-            38
-          ],
-          "color": "Purple/Red Rust",
-          "description": "Check pattern inside | 9/10 Condition",
-          "image": "/src/assets/purple1.jpg",
-          "additionalImages": [
-            "/src/assets/purple2.jpg",
-            "/src/assets/purple3.jpg"
-          ],
-          "isSoldOut": false,
-          "cartId": 1730332793079
-        }
-      ],
-      "orderDetails": {
-        "name": "Maryam Ashfaq",
-        "email": "momoashfaq@gmail.com",
-        "phone": "+925250505",
-        "address": "House No 4 , Street 31-A Sector I Bahria Town Phase 8 Rawalpindi",
-        "city": "Rawalpindi",
-        "notes": "",
-        "paymentMethod": "COD"
-      },
-      "createdAt": "2024-10-31T00:00:00.727Z"
-    },
-    {
-      "id": 1730335051531,
-      "items": [
-        {
-          "id": 2,
-          "name": "Black Sandals with Studs",
-          "brand": "Merry Scott",
-          "price": 1500,
-          "sizes": [
-            38
-          ],
-          "color": "Black",
-          "description": " Imported | 6/10 Condition",
-          "image": "/src/assets/sandals1.jpg",
-          "additionalImages": [
-            "/src/assets/sandals2.jpg",
-            "/src/assets/sandals3.jpg"
-          ],
-          "isSoldOut": false,
-          "cartId": 1730335037278
-        }
-      ],
-      "orderDetails": {
-        "name": "Maryam Ashfaq",
-        "email": "momoashfaq@gmail.com",
-        "phone": "+925250505",
-        "address": "House No 4 , Street 31-A Sector I Bahria Town Phase 8 Rawalpindi",
-        "city": "Rawalpindi",
-        "notes": "",
-        "paymentMethod": "COD"
-      },
-      "createdAt": "2024-10-31T00:37:31.531Z"
-    },
-    {
-      "id": 1730335415321,
-      "items": [
-        {
-          "id": 7,
-          "name": "White Sneakers",
-          "brand": "Pull and Bear",
-          "price": 1000,
-          "sizes": [
-            38
-          ],
-          "color": "White",
-          "description": "Will be shipped after a wash | 7/10 Condition",
-          "image": "/src/assets/white1.jpg",
-          "additionalImages": [
-            "/src/assets/white2.jpg",
-            "/src/assets/white3.jpg"
-          ],
-          "isSoldOut": false,
-          "cartId": 1730335406928
-        }
-      ],
-      "orderDetails": {
-        "name": "Maryam Ashfaq",
-        "email": "momoashfaq@gmail.com",
-        "phone": "+925250505",
-        "address": "House No 4 , Street 31-A Sector I Bahria Town Phase 8 Rawalpindi",
-        "city": "Rawalpindi",
-        "notes": "",
-        "paymentMethod": "COD"
-      },
-      "createdAt": "2024-10-31T00:43:35.321Z"
-    }
-  ]
+  "orders": []
 }
