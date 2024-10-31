@@ -4,15 +4,10 @@ import { AlertDialog, AlertDialogTrigger, AlertDialogContent, AlertDialogHeader,
 import { Star } from 'lucide-react';
 
 const FeaturedShoes = ({ shoes, onAddToCart, onViewProduct, selectedBrand, priceRange }) => {
-  const featuredIds = [17, 14, 13, 12, 9, 8, 6, 3, 23, 22, 20, 18];
+  const featuredIds = [17, 14, 13, 12, 9, 8, 6, 3];
   
-  // Helper function to check if a shoe is sold out
-  const isSoldOut = (shoeId) => {
-    return [8, 12, 13, 14, 15, 21, 23].includes(shoeId);
-  };
-
-  // Filtering logic
-  const filteredShoes = shoes.filter(shoe => {
+// Added filtering logic in FeaturedShoes component:
+const filteredShoes = shoes.filter(shoe => {
     const isFeatured = featuredIds.includes(shoe.id);
     const brandMatch = selectedBrand === 'All' || shoe.brand === selectedBrand;
     const priceMatch = 
@@ -24,7 +19,7 @@ const FeaturedShoes = ({ shoes, onAddToCart, onViewProduct, selectedBrand, price
     return isFeatured && brandMatch && priceMatch;
   });
   
-  // Conditional rendering if no shoes match filters
+  // Added conditional rendering if no shoes match filters:
   if (filteredShoes.length === 0) {
     return null;
   }
@@ -50,22 +45,13 @@ const FeaturedShoes = ({ shoes, onAddToCart, onViewProduct, selectedBrand, price
                   <img 
                     src={shoe.image} 
                     alt={shoe.name} 
-                    className={`w-full h-48 object-contain group-hover:scale-105 transition-transform duration-300 ${
-                      isSoldOut(shoe.id) ? 'opacity-50' : ''
-                    }`}
+                    className="w-full h-48 object-contain group-hover:scale-105 transition-transform duration-300"
                   />
                   <div className="absolute top-2 left-2">
                     <span className="bg-gradient-to-r from-teal-500 to-pink-500 text-white px-3 py-1 rounded-full text-sm">
                       Featured
                     </span>
                   </div>
-                  {isSoldOut(shoe.id) && (
-                    <div className="absolute top-2 right-2">
-                      <span className="bg-red-500 text-white px-3 py-1 rounded-full text-sm">
-                        Sold Out
-                      </span>
-                    </div>
-                  )}
                 </CardHeader>
               </div>
               
@@ -87,35 +73,22 @@ const FeaturedShoes = ({ shoes, onAddToCart, onViewProduct, selectedBrand, price
                 </button>
                 <AlertDialog>
                   <AlertDialogTrigger asChild>
-                    <button 
-                      className={`flex-1 py-2 rounded transition-colors ${
-                        isSoldOut(shoe.id)
-                          ? 'bg-gray-400 text-white cursor-not-allowed'
-                          : 'bg-black text-white hover:bg-gray-800'
-                      }`}
-                    >
+                    <button className="flex-1 bg-black text-white py-2 rounded hover:bg-gray-800 transition-colors">
                       Add to Cart
                     </button>
                   </AlertDialogTrigger>
                   <AlertDialogContent>
                     <AlertDialogHeader>
-                      <AlertDialogTitle>
-                        {isSoldOut(shoe.id) ? 'Item Sold Out' : 'Add to Cart'}
-                      </AlertDialogTitle>
+                      <AlertDialogTitle>Add to Cart</AlertDialogTitle>
                       <AlertDialogDescription>
-                        {isSoldOut(shoe.id)
-                          ? "We're sorry, this item is currently sold out."
-                          : `Do you want to add ${shoe.name} to your cart?`
-                        }
+                        Do you want to add {shoe.name} to your cart?
                       </AlertDialogDescription>
                     </AlertDialogHeader>
                     <AlertDialogFooter>
                       <AlertDialogCancel>Cancel</AlertDialogCancel>
-                      {!isSoldOut(shoe.id) && (
-                        <AlertDialogAction onClick={() => onAddToCart(shoe)}>
-                          Add to Cart
-                        </AlertDialogAction>
-                      )}
+                      <AlertDialogAction onClick={() => onAddToCart(shoe)}>
+                        Add to Cart
+                      </AlertDialogAction>
                     </AlertDialogFooter>
                   </AlertDialogContent>
                 </AlertDialog>

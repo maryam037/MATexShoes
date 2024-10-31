@@ -19,50 +19,24 @@ const CheckoutPage = ({ cart, onClose, removeFromCart, onViewProduct }) => {
   const calculateTotal = () => {
     return cart.reduce((total, item) => total + item.price, 0);
   };
-  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-  
-    try {
-      const response = await fetch('http://localhost:3001/api/orders', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          cart,
-          orderDetails: formData,
-        }),
-      });
-  
-      if (!response.ok) {
-        throw new Error('Failed to place order');
-      }
-  
-      setShowSuccess(true);
-  
-      // Clear cart in parent component
-      onClose(); // Assuming this also clears the cart in the parent
-  
-      // Fetch updated shoes after order is placed
-      const updatedShoesResponse = await fetch('http://localhost:3001/api/shoes');
-      const updatedShoes = await updatedShoesResponse.json();
-      setShoes(updatedShoes); // Assuming setShoes is defined in the parent
-  
-    } catch (error) {
-      console.error('Error placing order:', error);
-    } finally {
-      setIsSubmitting(false);
-  
-      // Reset after showing success message
-      setTimeout(() => {
-        setShowSuccess(false);
-        onClose();
-      }, 2000);
-    }
+    
+    // Simulate API call
+    await new Promise(resolve => setTimeout(resolve, 1500));
+    
+    setShowSuccess(true);
+    setIsSubmitting(false);
+    
+    // Reset after showing success message
+    setTimeout(() => {
+      setShowSuccess(false);
+      onClose();
+    }, 2000);
   };
-  
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100">
       <div className="pt-20 px-4 max-w-6xl mx-auto">
@@ -151,7 +125,7 @@ const CheckoutPage = ({ cart, onClose, removeFromCart, onViewProduct }) => {
                         className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-teal-500 hover:border-teal-300 transition-colors duration-200"
                         value={formData.name}
                         onChange={(e) => setFormData({...formData, name: e.target.value})}
-                        placeholder="Name"
+                        placeholder="John Doe"
                       />
                     </div>
                     <div className="space-y-2">
@@ -162,7 +136,7 @@ const CheckoutPage = ({ cart, onClose, removeFromCart, onViewProduct }) => {
                         className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-teal-500 hover:border-teal-300 transition-colors duration-200"
                         value={formData.email}
                         onChange={(e) => setFormData({...formData, email: e.target.value})}
-                        placeholder="name@example.com"
+                        placeholder="john@example.com"
                       />
                     </div>
                   </div>

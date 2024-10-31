@@ -52,9 +52,13 @@ const ShoeStore = () => {
   const [priceRange, setPriceRange] = useState('All');
   const mainRef = useRef(null);
   const [showCheckout, setShowCheckout] = useState(false);
-  const [shoes, setShoes] = useState(sampleShoes); // Initialize with sample data
+  const [shoes, setShoes] = useState(sampleShoes);
 
-  // Modified useEffect to handle fetch errors gracefully
+// Add this function to update shoes
+const updateShoesAfterOrder = (updatedShoes) => {
+  setShoes(updatedShoes);
+};
+
   useEffect(() => {
     const fetchShoes = async () => {
       try {
