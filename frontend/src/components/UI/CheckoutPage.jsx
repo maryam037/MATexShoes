@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { ArrowLeft, CreditCard, Truck, MapPin, Package } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-
-const CheckoutPage = ({ cart, onClose, removeFromCart, onViewProduct }) => {
+import { useNavigate } from 'react-router-dom';
+// frontend/src/components/UI/CheckoutPage.jsx
+const CheckoutPage = ({ cart, onClose, removeFromCart, onViewProduct, markProductsAsSold }) => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -10,7 +12,7 @@ const CheckoutPage = ({ cart, onClose, removeFromCart, onViewProduct }) => {
     address: '',
     city: '',
     notes: '',
-    paymentMethod: 'COD', // Default to COD
+    paymentMethod: 'COD',
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -19,26 +21,59 @@ const CheckoutPage = ({ cart, onClose, removeFromCart, onViewProduct }) => {
   const calculateTotal = () => {
     return cart.reduce((total, item) => total + item.price, 0);
   };
-// In CheckoutPage.jsx, modify the handleSubmit function
+// frontend/src/components/UI/CheckoutPage.jsx
+// frontend/src/components/UI/CheckoutPage.jsx
 const handleSubmit = async (e) => {
   e.preventDefault();
   setIsSubmitting(true);
 
-  // Simulate API call
-  await new Promise(resolve => setTimeout(resolve, 1500));
+  try {
+    console.log('Submitting order...'); // Debug log
 
-  // Mark products as sold and reset cart
-  markProductsAsSold(cart);
+    const orderDetails = {
+      ...formData,
+      total: calculateTotal(),
+      items: cart.map(item => ({
+        id: item.id,
+        name: item.name,
+        price: item.price
+      }))
+    };
 
-  setShowSuccess(true);
-  setIsSubmitting(false);
+    const response = await fetch('http://localhost:3001/api/place-order', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        orderDetails,
+        soldProducts: cart.map(item => item.id)
+      })
+    });
 
-  // Reset and redirect after showing success message
-  setTimeout(() => {
-    setShowSuccess(false);
-    setShowCheckout(false); // Close checkout page
-    alert('Your order has been successfully placed!'); // Show success alert
-  }, 2000);
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => null);
+      throw new Error(errorData?.message || 'Failed to place order');
+    }
+
+    const data = await response.json();
+    console.log('Success response:', data);
+    
+    // Handle success
+    markProductsAsSold(cart);
+    setShowSuccess(true);
+    
+    // Navigate after showing success message
+    setTimeout(() => {
+      navigate('/');
+    }, 2000);
+
+  } catch (error) {
+    console.error('Error placing order:', error);
+    alert(`Failed to place order: ${error.message}`);
+  } finally {
+    setIsSubmitting(false);
+  }
 };
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100">
@@ -128,7 +163,7 @@ const handleSubmit = async (e) => {
                         className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-teal-500 hover:border-teal-300 transition-colors duration-200"
                         value={formData.name}
                         onChange={(e) => setFormData({...formData, name: e.target.value})}
-                        placeholder="John Doe"
+                        placeholder="Enter your name"
                       />
                     </div>
                     <div className="space-y-2">
@@ -139,7 +174,7 @@ const handleSubmit = async (e) => {
                         className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-teal-500 hover:border-teal-300 transition-colors duration-200"
                         value={formData.email}
                         onChange={(e) => setFormData({...formData, email: e.target.value})}
-                        placeholder="john@example.com"
+                        placeholder="Name@example.com"
                       />
                     </div>
                   </div>

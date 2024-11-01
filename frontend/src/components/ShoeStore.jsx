@@ -54,18 +54,16 @@ const ShoeStore = () => {
   const [showCheckout, setShowCheckout] = useState(false);
   const [shoes, setShoes] = useState(sampleShoes);
 
-// In ShoeStore.jsx, add this new function
+// In ShoeStore.jsx
 const markProductsAsSold = (cartItems) => {
-  const updatedShoes = shoes.map(shoe => {
-    if (cartItems.some(cartItem => cartItem.id === shoe.id)) {
-      return { ...shoe, isSoldOut: true };
-    }
-    return shoe;
-  });
-  setShoes(updatedShoes);
-  setCart([]); // Reset cart
+  setShoes(prevShoes => 
+    prevShoes.map(shoe => ({
+      ...shoe,
+      isSoldOut: cartItems.some(cartItem => cartItem.id === shoe.id) ? true : shoe.isSoldOut
+    }))
+  );
+  setCart([]); // Clear the cart
 };
-
   useEffect(() => {
     const fetchShoes = async () => {
       try {
@@ -186,22 +184,23 @@ const markProductsAsSold = (cartItems) => {
 {/* Fixed portion of ShoeStore.jsx */}
    
 {showCheckout ? (
-        <CheckoutPage
-          cart={cart}
-          onClose={() => setShowCheckout(false)}
-          removeFromCart={removeFromCart}
-          onViewProduct={handleViewProduct}
-          markProductsAsSold={markProductsAsSold} // Add this prop
-  setShowCheckout={setShowCheckout}
-        />
-      ) : selectedProduct ? (
-        <ProductDetails
-          shoe={selectedProduct}
-          onGoBack={handleGoBack}
-          onAddToCart={addToCart}
-          onCheckoutPage={() => setShowCheckout(true)}
-        />
-      ) : (
+  <CheckoutPage
+    cart={cart}
+    onClose={() => setShowCheckout(false)}
+    removeFromCart={removeFromCart}
+    onViewProduct={handleViewProduct}
+    markProductsAsSold={markProductsAsSold}
+  />
+) : selectedProduct ? (
+  <ProductDetails
+    shoe={selectedProduct}
+    onGoBack={handleGoBack}
+    onAddToCart={addToCart}
+    onCheckoutPage={() => setShowCheckout(true)}
+  />
+) : (
+  // Rest of your content
+
         <>
   <section className="relative h-screen flex items-center justify-center overflow-hidden">
     {/* Background Video */}

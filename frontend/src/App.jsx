@@ -1,14 +1,15 @@
-// App.jsx
-
+// src/App.jsx
 import React from 'react';
-import ShoeStore from './components/ShoeStore.jsx';
-import './index.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import ShoeStore from './components/ShoeStore';
 
 function App() {
   return (
-    <div className="bg-gray-100 min-h-screen">
-      <ShoeStore />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<ShoeStore />} />
+      </Routes>
+    </Router>
   );
 }
 

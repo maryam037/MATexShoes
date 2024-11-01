@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect} from 'react';
 import { ArrowLeft, Heart, Share2 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
@@ -16,13 +16,20 @@ import {
 const ProductDetails = ({ shoe, onGoBack, onAddToCart, onCheckoutPage }) => {
   const [selectedImage, setSelectedImage] = useState(0);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  // ... rest of your component code
   if (!shoe) return null;
 
-  const soldOutProductIds = [8, 12, 13, 14, 15, 21, 23];
-  const isSoldOut = soldOutProductIds.includes(shoe.id);
+  const isSoldOut = () => {
+    const soldOutProductIds = [8, 12, 13, 14, 15, 21, 23];
+    return soldOutProductIds.includes(shoe.id) || shoe.isSoldOut;
+  };
 
   const getImages = () => {
-    return [shoe.image || "/api/placeholder/400/300", ...shoe.additionalImages || []];
+    return [shoe.image || "/api/placeholder/400/300", ...(shoe.additionalImages || [])];
   };
 
   const images = getImages();
@@ -64,7 +71,7 @@ const ProductDetails = ({ shoe, onGoBack, onAddToCart, onCheckoutPage }) => {
             <CardHeader className="text-center">
               <CardTitle className="text-2xl font-bold text-gray-900">
                 {shoe.name}
-                {isSoldOut && (
+                {isSoldOut() && (
                   <span className="ml-2 inline-block bg-red-100 text-red-600 text-sm px-2 py-1 rounded">
                     Sold Out
                   </span>
@@ -79,10 +86,10 @@ const ProductDetails = ({ shoe, onGoBack, onAddToCart, onCheckoutPage }) => {
                     src={images[selectedImage]}
                     alt={`${shoe.name} - View ${selectedImage + 1}`}
                     className={`w-full h-96 object-contain rounded-lg ${
-                      isSoldOut ? 'opacity-50' : ''
+                      isSoldOut() ? 'opacity-50' : ''
                     }`}
                   />
-                  {isSoldOut && (
+                  {isSoldOut() && (
                     <div className="absolute inset-0 flex items-center justify-center">
                       <div className="bg-red-600 text-white px-6 py-3 rounded-lg text-xl font-bold transform -rotate-12">
                         SOLD OUT
@@ -111,7 +118,7 @@ const ProductDetails = ({ shoe, onGoBack, onAddToCart, onCheckoutPage }) => {
                         selectedImage === index 
                           ? 'ring-2 ring-teal-500 ring-offset-2' 
                           : 'hover:opacity-75'
-                      } ${isSoldOut ? 'opacity-50' : ''}`}
+                      } ${isSoldOut() ? 'opacity-50' : ''}`}
                     >
                       <img
                         src={img}
@@ -140,16 +147,16 @@ const ProductDetails = ({ shoe, onGoBack, onAddToCart, onCheckoutPage }) => {
                     <AlertDialogTrigger asChild>
                       <button 
                         className={`w-full py-3 rounded-lg transition-colors ${
-                          isSoldOut 
+                          isSoldOut() 
                             ? 'bg-gray-300 cursor-not-allowed'
                             : 'bg-black text-white hover:bg-gray-800'
                         }`}
-                        disabled={isSoldOut}
+                        disabled={isSoldOut()}
                       >
-                        {isSoldOut ? 'Sold Out' : 'Add to Cart'}
+                        {isSoldOut() ? 'Sold Out' : 'Add to Cart'}
                       </button>
                     </AlertDialogTrigger>
-                    {!isSoldOut && (
+                    {!isSoldOut() && (
                       <AlertDialogContent>
                         <AlertDialogHeader>
                           <AlertDialogTitle>Add to Cart</AlertDialogTitle>
@@ -169,14 +176,14 @@ const ProductDetails = ({ shoe, onGoBack, onAddToCart, onCheckoutPage }) => {
 
                   <button
                     onClick={handleProceedToCheckout}
-                    disabled={isSoldOut}
-                    className={`w-full py-4 rounded-lg font-medium transition-all duration-300 
-                      ${isSoldOut 
+                    disabled={isSoldOut()}
+                    className ={`w-full py-4 rounded-lg font-medium transition-all duration-300 
+                      ${isSoldOut() 
                         ? 'bg-gray-300 cursor-not-allowed'
                         : 'text-white bg-gradient-to-r from-teal-500 to-pink-500 hover:from-teal-600 hover:to-pink-600 transform hover:-translate-y-1'
                       }`}
                   >
-                    {isSoldOut ? 'Not Available' : 'Proceed to Checkout'}
+                    {isSoldOut() ? 'Not Available' : 'Proceed to Checkout'}
                   </button>
                 </div>
               </div>
