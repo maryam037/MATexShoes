@@ -470,7 +470,7 @@
         "/src/assets/goldenh22.jpg",
         "/src/assets/goldenh23.jpg"
       ],
-      "isSoldOut": false
+      "isSoldOut": true
     },
     {
       "id": 29,
@@ -504,7 +504,7 @@
         "/src/assets/blacksuede2.jpg",
         "/src/assets/blacksuede3.jpg"
       ],
-      "isSoldOut": false
+      "isSoldOut": true
     },
     {
       "id": 31,
@@ -521,7 +521,7 @@
         "/src/assets/brownsuede2.jpg",
         "/src/assets/brownsuede3.jpg"
       ],
-      "isSoldOut": false
+      "isSoldOut": true
     },
     {
       "id": 33,
@@ -538,7 +538,7 @@
         "/src/assets/brcoats2.jpg",
         "/src/assets/brcoats3.jpg"
       ],
-      "isSoldOut": false
+      "isSoldOut": true
     },
     {
       "id": 34,
@@ -605,7 +605,7 @@
         "/src/assets/furr2.jpg",
         "/src/assets/furr3.jpg"
       ],
-      "isSoldOut": false
+      "isSoldOut": true
     },
     {
       "id": 38,
@@ -626,7 +626,7 @@
     },
     {
       "id": 39,
-      "name": "Black leather strap heels",
+      "name": "Charles and Keith Black leather strap heels",
       "brand": "Charles and Keith",
       "price": 10000,
       "sizes": [
@@ -636,9 +636,9 @@
       "description": " Brand new with shoe box | Black Orignal Leather | 10/10 Condition",
       "image": "/src/assets/CK11.jpg",
       "additionalImages": [
-        "/src/assets/CK2.jpg"
+        "/src/assets/CK22.jpg"
       ],
-      "isSoldOut": false
+      "isSoldOut": true
     },
     {
       "id": 40,
@@ -657,6 +657,207 @@
       ],
       "isSoldOut": false
     }
+,
+    {
+      "id": 41,
+      "name": "Black Bow shoes",
+      "brand": "Unknown",
+      "price": 1000,
+      "sizes": [
+        8
+      ],
+      "color": "Black",
+      "description": " Imported | Black Bow shoes | 7/10 Condition",
+      "image": "/src/assets/bow1.jpg",
+      "additionalImages": [
+        "/src/assets/bow2.jpg"
+      ],
+      "isSoldOut": false
+    }
+,
+    {
+      "id": 42,
+      "name": "Black Sandals",
+      "brand": "TAOS Spanish",
+      "price": 1500,
+      "sizes": [
+        38
+      ],
+      "color": "Black",
+      "description": " Black leather Sandals | 8/10 Condition",
+      "image": "/src/assets/bsandals1.jpg",
+      "additionalImages": [
+        "/src/assets/bsandals2.jpg"
+      ],
+      "isSoldOut": false
+    }
+,
+    {
+      "id": 43,
+      "name": "Orignal Addidas Boost shoes",
+      "brand": "Addidas",
+      "price": 7000,
+      "sizes": [
+        7.5
+      ],
+      "color": "Black",
+      "description": " Orignal Addidas Boost shoes | 9/10 Condition",
+      "image": "/src/assets/addidas1.jpg",
+      "additionalImages": [
+        "/src/assets/addidas2.jpg",
+        "/src/assets/addidas3.jpg"
+      ],
+      "isSoldOut": true
+    }
+,
+    {
+      "id": 44,
+      "name": "Olive Green joggers without laces",
+      "brand": "Unknown",
+      "price": 1000,
+      "sizes": [
+        39
+      ],
+      "color": "Olive green",
+      "description": " Olive Green joggers without laces | 8/10 Condition",
+      "image": "/src/assets/olive1.jpg",
+      "additionalImages": [
+        "/src/assets/olive2.jpg"
+      ],
+      "isSoldOut": false
+    }
+,
+    {
+      "id": 45,
+      "name": "New Formal Silver Stones flat chappal",
+      "brand": "Almas",
+      "price": 2000,
+      "sizes": [
+        37
+      ],
+      "color": "Silver",
+      "description": " Formal Silver Stones flat chappal | 10/10 Condition",
+      "image": "/src/assets/diamond1.jpg",
+      "additionalImages": [
+        "/src/assets/diamond2.jpg"
+      ],
+      "isSoldOut": false
+    }
+,
+    {
+      "id": 46,
+      "name": "Zara Basic Maroon Shiny Shoes ",
+      "brand": "Zara",
+      "price": 2500,
+      "sizes": [
+        37
+      ],
+      "color": "Maroon",
+      "description": " Imported | Zara Basic Maroon Shiny Shoes | 8/10 Condition",
+      "image": "/src/assets/zara1.jpg",
+      "additionalImages": [
+        "/src/assets/zara2.jpg",
+        "/src/assets/zara3.jpg"
+      ],
+      "isSoldOut": false
+    }
+,
+    {
+      "id": 47,
+      "name": "Navy Blue Insignia Coat Shoes ",
+      "brand": "Insignia",
+      "price": 3000,
+      "sizes": [
+        37
+      ],
+      "color": "Navy Blue",
+      "description": " Navy Blue Insignia Coat Shoes | 9/10 Condition",
+      "image": "/src/assets/navy1.jpg",
+      "additionalImages": [
+        "/src/assets/navy2.jpg",
+        "/src/assets/navy3.jpg"
+      ],
+      "isSoldOut": true
+    }
+
+,
+    {
+      "id": 48,
+      "name": "Colorful Insignia Sandals ",
+      "brand": "Insignia",
+      "price": 1500,
+      "sizes": [
+        38
+      ],
+      "color": "Black/Mustard/Maroon/Off-White",
+      "description": " Colorful Insignia Sandals | 8/10 Condition",
+      "image": "/src/assets/colors1.jpg",
+      "additionalImages": [
+        "/src/assets/colors2.jpg"
+      ],
+      "isSoldOut": false
+    }
+,
+    {
+      "id": 49,
+      "name": "4 IN 1 Khussay Traditional ",
+      "brand": "Local",
+      "price": 2000,
+      "sizes": [
+        8
+      ],
+      "color": "Olive Green /Golden /Black /Cream /Off-White",
+      "description": " 100% Comfort | 4 in 1 Deal | Traditional Khussay | 9/10 Condition",
+      "image": "/src/assets/khussay1.jpg",
+      "additionalImages": [
+        "/src/assets/khussay2.jpg",
+        "/src/assets/khussay3.jpg",
+        "/src/assets/khussay4.jpg",
+        "/src/assets/khussay5.jpg"
+      ],
+      "isSoldOut": false
+    }
+,
+    {
+      "id": 50,
+      "name": " Brown Chappal With Golden Chain",
+      "brand": "Local",
+      "price": 2000,
+      "sizes": [
+        38
+      ],
+      "color": "Brown",
+      "description": " 100% Comfort and soft Velvet | 9/10 Condition",
+      "image": "/src/assets/brchain1.jpg",
+      "additionalImages": [
+        "/src/assets/brchain2.jpg",
+        "/src/assets/brchain3.jpg"
+      ],
+      "isSoldOut": true
+    }
+,
+    {
+      "id": 51,
+      "name": " Traditional Handmade Multani Chappal",
+      "brand": "Local",
+      "price": 1000,
+      "sizes": [
+        38
+      ],
+      "color": "Multi color",
+      "description": " 100% Comfort | Handmade Multani Kheri | 8/10 Condition ",
+      "image": "/src/assets/multani1.jpg",
+      "additionalImages": [
+        "/src/assets/multani2.jpg",
+        "/src/assets/multani3.jpg"
+      ],
+      "isSoldOut": false
+    }
+
+
+
+
+
   ],
   "orders": [
   ]

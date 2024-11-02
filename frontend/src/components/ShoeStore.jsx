@@ -193,11 +193,13 @@ const markProductsAsSold = (cartItems) => {
   />
 ) : selectedProduct ? (
   <ProductDetails
-    shoe={selectedProduct}
-    onGoBack={handleGoBack}
-    onAddToCart={addToCart}
-    onCheckoutPage={() => setShowCheckout(true)}
-  />
+  shoe={selectedProduct}
+  shoes={shoes}
+  onGoBack={handleGoBack}
+  onAddToCart={addToCart}
+  onCheckoutPage={() => setShowCheckout(true)}
+  onViewProduct={(newShoe) => setSelectedProduct(newShoe)}
+/>
 ) : (
   // Rest of your content
 
