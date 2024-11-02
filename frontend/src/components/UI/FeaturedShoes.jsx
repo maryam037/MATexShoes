@@ -3,21 +3,21 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { AlertDialog, AlertDialogTrigger, AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogDescription, AlertDialogFooter, AlertDialogCancel, AlertDialogAction } from "@/components/ui/alert-dialog";
 import { Star } from 'lucide-react';
 
-const FeaturedShoes = ({ shoes, onAddToCart, onViewProduct, selectedBrand, priceRange }) => {
-  const featuredIds = [17, 14, 13, 12, 9, 8, 6, 3];
+const FeaturedShoes = ({ shoes, onAddToCart, onViewProduct, selectedcateg, priceRange }) => {
+  const featuredIds = [49,3,6,20,27,45,38,24,36,26,17,45,27,9];
   const isSoldOut = (shoe) => {
     return shoe.isSoldOut || [8, 12, 13, 14, 15, 21, 23].includes(shoe.id);
   };
   const filteredShoes = shoes.filter(shoe => {
     const isFeatured = featuredIds.includes(shoe.id);
-    const brandMatch = selectedBrand === 'All' || shoe.brand === selectedBrand;
+    const categMatch = selectedcateg === 'All' || shoe.category=== selectedcateg;
     const priceMatch = 
       priceRange === 'All' ||
       (priceRange === 'Under 1000' && shoe.price < 1000) ||
       (priceRange === '1000 to 3000' && shoe.price >= 1000 && shoe.price <= 3000) ||
       (priceRange === 'Over 3000' && shoe.price > 3000);
     
-    return isFeatured && brandMatch && priceMatch;
+    return isFeatured && categMatch && priceMatch;
   });
 
   if (filteredShoes.length === 0) {

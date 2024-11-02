@@ -117,7 +117,7 @@ const ProductDetails = ({ shoe, shoes, onGoBack, onAddToCart, onCheckoutPage, on
                       src={images[selectedImage]}
                       alt={`${shoe.name} - View ${selectedImage + 1}`}
                       className={`w-full h-96 object-contain rounded-lg ${
-                        isSoldOut() ? 'opacity-50' : ''
+                        isSoldOut() ? 'opacity-100' : ''
                       }`}
                     />
                     {isSoldOut() && (
@@ -149,7 +149,7 @@ const ProductDetails = ({ shoe, shoes, onGoBack, onAddToCart, onCheckoutPage, on
                           selectedImage === index 
                             ? 'ring-2 ring-teal-500 ring-offset-2' 
                             : 'hover:opacity-75'
-                        } ${isSoldOut() ? 'opacity-50' : ''}`}
+                        } ${isSoldOut() ? 'opacity-100' : ''}`}
                       >
                         <img
                           src={img}
