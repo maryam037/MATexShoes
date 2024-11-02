@@ -650,9 +650,10 @@
       ],
       "color": "Black",
       "description": " Black leather coat shoes | 7/10 Condition",
-      "image": "/src/assets/brownleather1.jpg",
+      "image": "/src/assets/strapcoat1.jpg",
       "additionalImages": [
-        "/src/assets/brownleather2.jpg"
+        "/src/assets/strapcoat2.jpg",
+        "/src/assets/strapcoat3.jpg"
       ],
       "isSoldOut": false
     }
