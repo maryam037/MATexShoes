@@ -431,9 +431,10 @@
       ],
       "color": "Tea pink",
       "description": " Turkish Heels | Imported | 9.5/10 Condition",
-      "image": "/src/assets/brownleather1.jpg",
+      "image": "/src/assets/teapink1.jpg",
       "additionalImages": [
-        "/src/assets/brownleather2.jpg"
+        "/src/assets/teapink2.jpg",
+        "/src/assets/teapink3.jpg"
       ],
       "isSoldOut": false
     },
@@ -447,9 +448,10 @@
       ],
       "color": "Golden",
       "description": " Wedding Pencil Heels | 9/10 Condition",
-      "image": "/src/assets/brownleather1.jpg",
+      "image": "/src/assets/formalgoldh11.jpg",
       "additionalImages": [
-        "/src/assets/brownleather2.jpg"
+        "/src/assets/formalgoldh12.jpg",
+        "/src/assets/formalgoldh13.jpg"
       ],
       "isSoldOut": false
     },
@@ -463,9 +465,10 @@
       ],
       "color": "Golden",
       "description": " Wedding Block Heels | 9/10 Condition",
-      "image": "/src/assets/brownleather1.jpg",
+      "image": "/src/assets/goldenh21.jpg",
       "additionalImages": [
-        "/src/assets/brownleather2.jpg"
+        "/src/assets/goldenh22.jpg",
+        "/src/assets/goldenh23.jpg"
       ],
       "isSoldOut": false
     },
@@ -479,9 +482,10 @@
       ],
       "color": "Black",
       "description": " Imported from USA | 8/10 Condition",
-      "image": "/src/assets/brownleather1.jpg",
+      "image": "/src/assets/blacktjimax1.jpg",
       "additionalImages": [
-        "/src/assets/brownleather2.jpg"
+        "/src/assets/blacktjimax2.jpg",
+        "/src/assets/blacktjimax3.jpg"
       ],
       "isSoldOut": false
     },
@@ -495,9 +499,10 @@
       ],
       "color": "Black",
       "description": " Imported from Saudi Arabia | Medium Heels | 9.5/10 Condition",
-      "image": "/src/assets/brownleather1.jpg",
+      "image": "/src/assets/blacksuede1.jpg",
       "additionalImages": [
-        "/src/assets/brownleather2.jpg"
+        "/src/assets/blacksuede2.jpg",
+        "/src/assets/blacksuede3.jpg"
       ],
       "isSoldOut": false
     },
@@ -511,9 +516,10 @@
       ],
       "color": "Brown",
       "description": " Brand New | Imported from Turkey | 10/10 Condition",
-      "image": "/src/assets/brownleather1.jpg",
+      "image": "/src/assets/brownsuede1.jpg",
       "additionalImages": [
-        "/src/assets/brownleather2.jpg"
+        "/src/assets/brownsuede2.jpg",
+        "/src/assets/brownsuede3.jpg"
       ],
       "isSoldOut": false
     },
@@ -527,9 +533,10 @@
       ],
       "color": "Brown",
       "description": " Brand New | 100% Comfort | Medicated Shoes | 10/10 Condition",
-      "image": "/src/assets/brownleather1.jpg",
+      "image": "/src/assets/brcoats1.jpg",
       "additionalImages": [
-        "/src/assets/brownleather2.jpg"
+        "/src/assets/brcoats2.jpg",
+        "/src/assets/brcoats3.jpg"
       ],
       "isSoldOut": false
     },
@@ -543,9 +550,10 @@
       ],
       "color": "Nude/Skin",
       "description": " Formal coat shoes | 100% Comfort | Medicated Shoes | 9/10 Condition",
-      "image": "/src/assets/brownleather1.jpg",
+      "image": "/src/assets/nude1.jpg",
       "additionalImages": [
-        "/src/assets/brownleather2.jpg"
+        "/src/assets/nude2.jpg",
+        "/src/assets/nude3.jpg"
       ],
       "isSoldOut": false
     },
@@ -559,9 +567,10 @@
       ],
       "color": "Maroon",
       "description": " Formal shoes | 100% Comfort | Medium heels | 9/10 Condition",
-      "image": "/src/assets/brownleather1.jpg",
+      "image": "/src/assets/maroon1.jpg",
       "additionalImages": [
-        "/src/assets/brownleather2.jpg"
+        "/src/assets/maroon2.jpg",
+        "/src/assets/maroon3.jpg"
       ],
       "isSoldOut": false
     },
@@ -575,9 +584,9 @@
       ],
       "color": "Copper/Golden",
       "description": " Formal Transparent Medium heels| 10/10 Condition",
-      "image": "/src/assets/brownleather1.jpg",
+      "image": "/src/assets/coppershine1.jpg",
       "additionalImages": [
-        "/src/assets/brownleather2.jpg"
+        "/src/assets/coppershine2.jpg"
       ],
       "isSoldOut": false
     },
@@ -591,9 +600,10 @@
       ],
       "color": "Brown",
       "description": " New Soft furr Orignal suede | 10/10 Condition",
-      "image": "/src/assets/brownleather1.jpg",
+      "image": "/src/assets/furr1.jpg",
       "additionalImages": [
-        "/src/assets/brownleather2.jpg"
+        "/src/assets/furr2.jpg",
+        "/src/assets/furr3.jpg"
       ],
       "isSoldOut": false
     },
@@ -607,9 +617,10 @@
       ],
       "color": "Dull gold",
       "description": " Dull Gold Heels | 8/10 Condition",
-      "image": "/src/assets/brownleather1.jpg",
+      "image": "/src/assets/cherrie1.jpg",
       "additionalImages": [
-        "/src/assets/brownleather2.jpg"
+        "/src/assets/cherrie2.jpg",
+        "/src/assets/cherrie3.jpg"
       ],
       "isSoldOut": false
     },
@@ -623,9 +634,9 @@
       ],
       "color": "Black",
       "description": " Brand new with shoe box | Black Orignal Leather | 10/10 Condition",
-      "image": "/src/assets/brownleather1.jpg",
+      "image": "/src/assets/CK11.jpg",
       "additionalImages": [
-        "/src/assets/brownleather2.jpg"
+        "/src/assets/CK2.jpg"
       ],
       "isSoldOut": false
     },
