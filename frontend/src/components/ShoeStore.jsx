@@ -1,6 +1,6 @@
 import ProductDetails from "./UI/ProductDetails.jsx";
 import React, { useState, useRef, useEffect } from "react";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/UI/card";
 import FeaturedShoes from './UI/FeaturedShoes.jsx';
 import CheckoutPage from './UI/CheckoutPage.jsx';
 import { ShoppingCart, Menu, X } from "lucide-react";
@@ -14,7 +14,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/components/ui/alert-dialog";
+} from "@/components/UI/alert-dialog";
 
 const ShoeStore = () => {
   // Sample data as fallback

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowLeft, CreditCard, Truck, MapPin, Package } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/UI/card";
 import { useNavigate } from 'react-router-dom';
 import {
   AlertDialog,
@@ -10,7 +10,7 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-} from "@/components/ui/alert-dialog";
+} from "@/components/UI/alert-dialog";
 
 const CheckoutPage = ({ cart, onClose, removeFromCart, onViewProduct, markProductsAsSold }) => {
   const navigate = useNavigate();
