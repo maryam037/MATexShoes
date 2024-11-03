@@ -17,12 +17,12 @@ const initializeDb = () => {
 
 initializeDb();
 
-// CORS configuration - move this to the top
 app.use(cors({
   origin: [
     'http://localhost:5173',    // Local development
     'http://localhost:3000',    // Alternative local port
-    'https://matexshoes.vercel.app' // Your future Vercel deployment URL
+    'https://matexshoes.vercel.app', // Your future frontend URL
+    'https://matexshoesapi.vercel.app' // Your future backend URL
   ],
   credentials: true
 }));
