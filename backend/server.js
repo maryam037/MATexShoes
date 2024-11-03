@@ -1,4 +1,3 @@
-// backend/server.js
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
@@ -6,11 +5,34 @@ const jsonServer = require('json-server');
 const fs = require('fs');
 const nodemailer = require('nodemailer');
 const app = express();
-const port = 3001;
+const port = process.env.PORT || 3001;
 
-// Middleware
-app.use(cors());
+// Initialize db.json if it doesn't exist
+const initializeDb = () => {
+  const dbPath = './db.json';
+  if (!fs.existsSync(dbPath)) {
+    fs.writeFileSync(dbPath, JSON.stringify({ shoes: [], orders: [] }));
+  }
+};
+
+initializeDb();
+
+// CORS configuration - move this to the top
+app.use(cors({
+  origin: [
+    'http://localhost:5173',    // Local development
+    'http://localhost:3000',    // Alternative local port
+    'https://matexshoes.vercel.app' // Your future Vercel deployment URL
+  ],
+  credentials: true
+}));
+
 app.use(express.json());
+
+// Health check endpoint
+app.get('/healthz', (req, res) => {
+  res.status(200).json({ status: 'healthy' });
+});
 
 // Configure nodemailer
 const transporter = nodemailer.createTransport({
@@ -21,13 +43,7 @@ const transporter = nodemailer.createTransport({
   }
 });
 
-transporter.verify(function(error, success) {
-  if (error) {
-    console.log('Email configuration error:', error);
-  } else {
-    console.log('Server is ready to send emails');
-  }
-});
+// Your existing transporter.verify and app.post('/api/place-order') code here...
 
 app.post('/api/place-order', async (req, res) => {
   try {
@@ -138,11 +154,22 @@ const mailOptions = {
     });
   }
 });
+
 // JSON Server setup - This should come AFTER your custom routes
 const router = jsonServer.router('./db.json');
 app.use('/api', router);
 
-// Start server
-app.listen(port, () => {
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({
+    success: false,
+    message: 'Internal Server Error',
+    error: process.env.NODE_ENV === 'production' ? 'An unexpected error occurred' : err.message
+  });
+});
+
+app.listen(port, '0.0.0.0', () => {
   console.log(`Server is running on port ${port}`);
 });
+
