@@ -266,15 +266,16 @@ const CheckoutPage = ({ cart, onClose, removeFromCart, onViewProduct, markProduc
                         <span>Cash on Delivery</span>
                       </label>
                       <label className="flex items-center space-x-2">
-                        <input
-                          type="radio"
-                          value="Online Payment"
-                          checked={formData.paymentMethod === 'Online Payment'}
-                          onChange={(e) => setFormData({ ...formData, paymentMethod: e.target.value })}
-                          className="text-teal-500 focus:ring-teal-500"
-                        />
-                        <span>Online Payment</span>
-                      </label>
+  <input
+    type="radio"
+    value="Online Payment"
+    checked={formData.paymentMethod === 'Online Payment'}
+    onChange={(e) => setFormData({ ...formData, paymentMethod: e.target.value })}
+    className="text-teal-500 focus:ring-teal-500"
+    disabled // This disables the button
+  />
+  <span>Online Payment(Unfortunately not yet available)</span>
+</label>
                     </div>
                   </div>
 

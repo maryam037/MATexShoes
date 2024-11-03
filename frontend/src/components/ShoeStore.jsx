@@ -464,7 +464,7 @@ const markProductsAsSold = (cartItems) => {
                 <h1 className="text-lg font-bold mb-4 bg-gradient-to-r from-teal-500 to-pink-500 bg-clip-text text-transparent">
                     Contact
                 </h1>
-                <p className="text-gray-300">Email: maryamashfaq1828@gmail.com</p>
+                <p className="text-gray-300">Email: matexshoes@gmail.com</p>
                 <p className="text-gray-300">Phone: (+92) 324 5250505</p>
             </div>
             <div>

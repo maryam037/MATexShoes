@@ -776,7 +776,7 @@
       "additionalImages": [
         "/src/assets/diamond2.jpg"
       ],
-      "isSoldOut": false
+      "isSoldOut": false 
     },
     {
       "id": 46,
@@ -889,5 +889,6 @@
     }
   ],
   "orders": [
+    
   ]
 }
