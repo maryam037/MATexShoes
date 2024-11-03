@@ -1,8 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ArrowLeft, CreditCard, Truck, MapPin, Package } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useNavigate } from 'react-router-dom';
-// frontend/src/components/UI/CheckoutPage.jsx
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
+
 const CheckoutPage = ({ cart, onClose, removeFromCart, onViewProduct, markProductsAsSold }) => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -16,65 +25,71 @@ const CheckoutPage = ({ cart, onClose, removeFromCart, onViewProduct, markProduc
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [showSuccess, setShowSuccess] = useState(false);
+  const [showSuccessDialog, setShowSuccessDialog] = useState(false);
 
   const calculateTotal = () => {
     return cart.reduce((total, item) => total + item.price, 0);
   };
-// frontend/src/components/UI/CheckoutPage.jsx
-// frontend/src/components/UI/CheckoutPage.jsx
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  setIsSubmitting(true);
 
-  try {
-    console.log('Submitting order...'); // Debug log
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
 
-    const orderDetails = {
-      ...formData,
-      total: calculateTotal(),
-      items: cart.map(item => ({
-        id: item.id,
-        name: item.name,
-        price: item.price
-      }))
-    };
+    try {
+      console.log('Submitting order...'); // Debug log
 
-    const response = await fetch('http://localhost:3001/api/place-order', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        orderDetails,
-        soldProducts: cart.map(item => item.id)
-      })
-    });
+      const orderDetails = {
+        ...formData,
+        total: calculateTotal(),
+        items: cart.map(item => ({
+          id: item.id,
+          name: item.name,
+          price: item.price
+        }))
+      };
 
-    if (!response.ok) {
-      const errorData = await response.json().catch(() => null);
-      throw new Error(errorData?.message || 'Failed to place order');
+      const response = await fetch('http://localhost:3001/api/place-order', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          orderDetails,
+          soldProducts: cart.map(item => item.id)
+        })
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => null);
+        throw new Error(errorData?.message || 'Failed to place order');
+      }
+
+      const data = await response.json();
+      console.log('Success response:', data);
+      
+      // Handle success
+      markProductsAsSold(cart);
+      setShowSuccessDialog(true);
+
+    } catch (error) {
+      console.error('Error placing order:', error);
+      alert(`Failed to place order: ${error.message}`);
+    } finally {
+      setIsSubmitting(false);
     }
+  };
 
-    const data = await response.json();
-    console.log('Success response:', data);
-    
-    // Handle success
-    markProductsAsSold(cart);
-    setShowSuccess(true);
-    
-    // Navigate after showing success message
-    setTimeout(() => {
-      navigate('/');
-    }, 2000);
+  const handleCloseSuccessDialog = () => {
+    setShowSuccessDialog(false);
+    navigate('/');
+    window.location.reload(); // Force refresh the page
+  };
 
-  } catch (error) {
-    console.error('Error placing order:', error);
-    alert(`Failed to place order: ${error.message}`);
-  } finally {
-    setIsSubmitting(false);
-  }
-};
+  // Effect for scrolling to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100">
       <div className="pt-20 px-4 max-w-6xl mx-auto">
@@ -91,13 +106,21 @@ const handleSubmit = async (e) => {
           Checkout
         </h1>
 
-        {/* Success message */}
-        {showSuccess && (
-          <div className="mb-6 p-4 rounded-lg bg-green-50 text-green-800">
-            Order placed successfully using {formData.paymentMethod}!
-            Redirecting...
-          </div>
-        )}
+        <AlertDialog open={showSuccessDialog} onOpenChange={setShowSuccessDialog}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Order Placed Successfully!</AlertDialogTitle>
+            <AlertDialogDescription>
+              Thank you for shopping with us. You will receive a confirmation email soon.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogAction onClick={handleCloseSuccessDialog}>
+              OK
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Order Summary */}
