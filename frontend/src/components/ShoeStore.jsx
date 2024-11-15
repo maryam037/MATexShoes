@@ -1,6 +1,6 @@
 import ProductDetails from "./UI/ProductDetails.jsx";
 import React, { useState, useRef, useEffect } from "react";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/UI/card";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import FeaturedShoes from './UI/FeaturedShoes.jsx';
 import CheckoutPage from './UI/CheckoutPage.jsx';
 import { ShoppingCart, Menu, X } from "lucide-react";
@@ -14,7 +14,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/components/UI/alert-dialog";
+} from "@/components/ui/alert-dialog";
 
 const ShoeStore = () => {
   // Sample data as fallback
@@ -25,7 +25,7 @@ const ShoeStore = () => {
       brand: "Nike",
       price: 2500,
       description: "Classic Nike sneakers in excellent condition",
-      image: "/src/assets/shoes/nike-air-max.jpg"
+      image: "@/assets/shoes/nike-air-max.jpg"
     },
     {
       id: 2,
@@ -33,7 +33,7 @@ const ShoeStore = () => {
       brand: "Vans",
       price: 1800,
       description: "Vintage Vans skateboarding shoes",
-      image: "/src/assets/shoes/vans-old-skool.jpg"
+      image: "@/assets/shoes/vans-old-skool.jpg"
     },
     {
       id: 3,
@@ -41,7 +41,7 @@ const ShoeStore = () => {
       brand: "LC Waikiki",
       price: 900,
       description: "Comfortable casual shoes",
-      image: "/src/assets/shoes/lc-waikiki-casual.jpg"
+      image: "@/assets/shoes/lc-waikiki-casual.jpg"
     }
   ];
 
@@ -214,7 +214,7 @@ const markProductsAsSold = (cartItems) => {
         playsInline
         className="w-full h-full object-cover"
       >
-        <source src="/src/assets/shoesbg.mp4" type="video/mp4" />
+        <source src="@/assets/shoesbg.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
     </div>
@@ -288,14 +288,14 @@ const markProductsAsSold = (cartItems) => {
         <div className="space-y-4">
           <div className="rounded-lg overflow-hidden shadow-lg transform hover:scale-105 transition-transform duration-300">
             <img 
-              src="/src/assets/green1.jpg" 
+              src="@/assets/green1.jpg" 
               alt="Store Front" 
               className="w-full h-48 object-cover"
             />
           </div>
           <div className="rounded-lg overflow-hidden shadow-lg transform hover:scale-105 transition-transform duration-300">
             <img 
-              src="/src/assets/CK1.jpg" 
+              src="@/assets/CK1.jpg" 
               alt="Premium Shoes" 
               className="w-full h-48 object-contain"
             />
@@ -304,14 +304,14 @@ const markProductsAsSold = (cartItems) => {
         <div className="space-y-4 mt-8">
           <div className="rounded-lg overflow-hidden shadow-lg transform hover:scale-105 transition-transform duration-300">
             <img 
-              src="/src/assets/CK11.jpg" 
+              src="@/assets/CK11.jpg" 
               alt="Luxury Collection" 
               className="w-full h-48 object-contain"
             />
           </div>
           <div className="rounded-lg overflow-hidden shadow-lg transform hover:scale-105 transition-transform duration-300">
             <img 
-              src="/src/assets/furr1.jpg" 
+              src="@/assets/furr1.jpg" 
               alt="Casual Collection" 
               className="w-full h-48 object-cover"
             />

@@ -1,3 +1,4 @@
+// backend/server.js
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
@@ -5,34 +6,11 @@ const jsonServer = require('json-server');
 const fs = require('fs');
 const nodemailer = require('nodemailer');
 const app = express();
-const port = process.env.PORT || 3001;
+const port = 3001;
 
-// Initialize db.json if it doesn't exist
-const initializeDb = () => {
-  const dbPath = './db.json';
-  if (!fs.existsSync(dbPath)) {
-    fs.writeFileSync(dbPath, JSON.stringify({ shoes: [], orders: [] }));
-  }
-};
-
-initializeDb();
-
-app.use(cors({
-  origin: [
-    'http://localhost:5173',    // Local development
-    'http://localhost:3000',    // Alternative local port
-    'https://matexshoes.vercel.app', // Your future frontend URL
-    'https://matexshoesapi.vercel.app' // Your future backend URL
-  ],
-  credentials: true
-}));
-
+// Middleware
+app.use(cors());
 app.use(express.json());
-
-// Health check endpoint
-app.get('/healthz', (req, res) => {
-  res.status(200).json({ status: 'healthy' });
-});
 
 // Configure nodemailer
 const transporter = nodemailer.createTransport({
@@ -43,7 +21,13 @@ const transporter = nodemailer.createTransport({
   }
 });
 
-// Your existing transporter.verify and app.post('/api/place-order') code here...
+transporter.verify(function(error, success) {
+  if (error) {
+    console.log('Email configuration error:', error);
+  } else {
+    console.log('Server is ready to send emails');
+  }
+});
 
 app.post('/api/place-order', async (req, res) => {
   try {
@@ -64,7 +48,7 @@ app.post('/api/place-order', async (req, res) => {
 // In server.js
 const mailOptions = {
   from: process.env.EMAIL_USER,
-  to: 'maryamashfaq1828@gmail.com',
+  to: 'matexshoes@gmail.com',
   subject: 'New Order Received - MATex Shoes',
   html: `
     <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -154,22 +138,11 @@ const mailOptions = {
     });
   }
 });
-
 // JSON Server setup - This should come AFTER your custom routes
 const router = jsonServer.router('./db.json');
 app.use('/api', router);
 
-// Error handling middleware
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).json({
-    success: false,
-    message: 'Internal Server Error',
-    error: process.env.NODE_ENV === 'production' ? 'An unexpected error occurred' : err.message
-  });
-});
-
-app.listen(port, '0.0.0.0', () => {
+// Start server
+app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
-

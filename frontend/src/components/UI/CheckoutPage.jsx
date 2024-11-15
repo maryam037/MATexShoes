@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowLeft, CreditCard, Truck, MapPin, Package } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/UI/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useNavigate } from 'react-router-dom';
 import {
   AlertDialog,
@@ -10,7 +10,7 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-} from "@/components/UI/alert-dialog";
+} from "@/components/ui/alert-dialog";
 
 const CheckoutPage = ({ cart, onClose, removeFromCart, onViewProduct, markProductsAsSold }) => {
   const navigate = useNavigate();
@@ -47,12 +47,7 @@ const CheckoutPage = ({ cart, onClose, removeFromCart, onViewProduct, markProduc
           price: item.price
         }))
       };
-      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
 
-      // Use this in your fetch calls
-      fetch(`${API_URL}/api/place-order`, {
-        // ... rest of your fetch configuration
-      })
       const response = await fetch('http://localhost:3001/api/place-order', {
         method: 'POST',
         headers: {

@@ -11,10 +11,10 @@
       "color": "Black",
       "category": "winters",
       "description": "100% Faux Suede | Imported | Synthetic material | 8/10 Condition",
-      "image": "/src/assets/longb1.jpg",
+      "image": "@/assets/longb1.jpg",
       "additionalImages": [
-        "/src/assets/longb2.jpg",
-        "/src/assets/longb3.jpg"
+        "@/assets/longb2.jpg",
+        "@/assets/longb3.jpg"
       ],
       "isSoldOut": false
     },
@@ -29,10 +29,10 @@
       "color": "Black",
       "category": "summers",
       "description": " Imported | 6/10 Condition",
-      "image": "/src/assets/sandals1.jpg",
+      "image": "@/assets/sandals1.jpg",
       "additionalImages": [
-        "/src/assets/sandals2.jpg",
-        "/src/assets/sandals3.jpg"
+        "@/assets/sandals2.jpg",
+        "@/assets/sandals3.jpg"
       ],
       "isSoldOut": false
     },
@@ -47,10 +47,10 @@
       "color": "Gray/Green",
       "category": "all seasons",
       "description": "New Shoes with Box | 10/10 Condition",
-      "image": "/src/assets/green1.jpg",
+      "image": "@/assets/green1.jpg",
       "additionalImages": [
-        "/src/assets/green2.jpg",
-        "/src/assets/green3.jpg"
+        "@/assets/green2.jpg",
+        "@/assets/green3.jpg"
       ],
       "isSoldOut": false
     },
@@ -65,10 +65,10 @@
       "color": "Sky Blue",
       "category": "all seasons",
       "description": "Sneakers| 5/10 Condition",
-      "image": "/src/assets/bluesneaker1.jpg",
+      "image": "@/assets/bluesneaker1.jpg",
       "additionalImages": [
-        "/src/assets/bluesneaker2.jpg",
-        "/src/assets/bluesneaker3.jpg"
+        "@/assets/bluesneaker2.jpg",
+        "@/assets/bluesneaker3.jpg"
       ],
       "isSoldOut": false
     },
@@ -83,10 +83,10 @@
       "color": "Beige/Golden/Brown",
       "category": "all seasons",
       "description": "Sneakers | 8/10 Condition",
-      "image": "/src/assets/gold.jpg",
+      "image": "@/assets/gold.jpg",
       "additionalImages": [
-        "/src/assets/gold2.jpg",
-        "/src/assets/gold3.jpg"
+        "@/assets/gold2.jpg",
+        "@/assets/gold3.jpg"
       ],
       "isSoldOut": false
     },
@@ -101,10 +101,10 @@
       "color": "Purple/Red Rust",
       "category": "all seasons",
       "description": "Check pattern inside | 9/10 Condition",
-      "image": "/src/assets/purple1.jpg",
+      "image": "@/assets/purple1.jpg",
       "additionalImages": [
-        "/src/assets/purple2.jpg",
-        "/src/assets/purple3.jpg"
+        "@/assets/purple2.jpg",
+        "@/assets/purple3.jpg"
       ],
       "isSoldOut": false
     },
@@ -119,10 +119,10 @@
       "color": "White",
       "category": "all seasons",
       "description": "Will be shipped after a wash | 7/10 Condition",
-      "image": "/src/assets/white1.jpg",
+      "image": "@/assets/white1.jpg",
       "additionalImages": [
-        "/src/assets/white2.jpg",
-        "/src/assets/white3.jpg"
+        "@/assets/white2.jpg",
+        "@/assets/white3.jpg"
       ],
       "isSoldOut": false
     },
@@ -137,9 +137,9 @@
       "color": "Black",
       "category": "winters",
       "description": "Black shiny leather | High quality | 9.5/10 Condition",
-      "image": "/src/assets/boots1.jpg",
+      "image": "@/assets/boots1.jpg",
       "additionalImages": [
-        "/src/assets/boots2.jpg"
+        "@/assets/boots2.jpg"
       ],
       "isSoldOut": false
     },
@@ -154,9 +154,9 @@
       "color": "Black",
       "category": "all seasons",
       "description": "Black neat leather | High quality | 9/10 Condition",
-      "image": "/src/assets/black1.jpg",
+      "image": "@/assets/black1.jpg",
       "additionalImages": [
-        "/src/assets/black2.jpg"
+        "@/assets/black2.jpg"
       ],
       "isSoldOut": false
     },
@@ -171,9 +171,9 @@
       "color": "Brown",
       "category": "all seasons",
       "description": "Brown shiny leather | High quality | 9/10 Condition",
-      "image": "/src/assets/brown1.jpg",
+      "image": "@/assets/brown1.jpg",
       "additionalImages": [
-        "/src/assets/brown2.jpg"
+        "@/assets/brown2.jpg"
       ],
       "isSoldOut": false
     },
@@ -188,9 +188,9 @@
       "color": "Sky Blue",
       "category": "all seasons",
       "description": "Suede | High comfort | 7/10 Condition",
-      "image": "/src/assets/blue1.jpg",
+      "image": "@/assets/blue1.jpg",
       "additionalImages": [
-        "/src/assets/blue2.jpg"
+        "@/assets/blue2.jpg"
       ],
       "isSoldOut": false
     },
@@ -205,9 +205,9 @@
       "color": "White",
       "category": "all seasons",
       "description": "Original | Light stains | 8/10 Condition",
-      "image": "/src/assets/vans1.jpg",
+      "image": "@/assets/vans1.jpg",
       "additionalImages": [
-        "/src/assets/vans2.jpg"
+        "@/assets/vans2.jpg"
       ],
       "isSoldOut": false
     },
@@ -222,10 +222,10 @@
       "color": "White",
       "category": "winters",
       "description": "Original | Light stains | 8/10 Condition",
-      "image": "/src/assets/nike1.jpg",
+      "image": "@/assets/nike1.jpg",
       "additionalImages": [
-        "/src/assets/nike2.jpg",
-        "/src/assets/nike3.jpg"
+        "@/assets/nike2.jpg",
+        "@/assets/nike3.jpg"
       ],
       "isSoldOut": false
     },
@@ -240,10 +240,10 @@
       "color": "Black",
       "category": "winters",
       "description": "Original | 100% Comfort | Winters snow proof, strong Grip | 9/10 Condition",
-      "image": "/src/assets/blackboots1.jpg",
+      "image": "@/assets/blackboots1.jpg",
       "additionalImages": [
-        "/src/assets/blackboots2.jpg",
-        "/src/assets/blackboots3.jpg"
+        "@/assets/blackboots2.jpg",
+        "@/assets/blackboots3.jpg"
       ],
       "isSoldOut": false
     },
@@ -258,10 +258,10 @@
       "color": "Brown",
       "category": "winters",
       "description": "Original Suede | 100% Comfort | Strong Grip | 9/10 Condition",
-      "image": "/src/assets/brownboots1.jpg",
+      "image": "@/assets/brownboots1.jpg",
       "additionalImages": [
-        "/src/assets/brownboots2.jpg",
-        "/src/assets/brownboots3.jpg"
+        "@/assets/brownboots2.jpg",
+        "@/assets/brownboots3.jpg"
       ],
       "isSoldOut": false
     },
@@ -276,9 +276,9 @@
       "color": "Grey/Black",
       "category": "formal",
       "description": "100% Comfort | Small heels | 9/10 Condition",
-      "image": "/src/assets/greyheels 1.jpg",
+      "image": "@/assets/greyheels 1.jpg",
       "additionalImages": [
-        "/src/assets/greyheels 2.jpg"
+        "@/assets/greyheels 2.jpg"
       ],
       "isSoldOut": false
     },
@@ -293,9 +293,9 @@
       "color": "Black",
       "category": "formal",
       "description": "Black shiny high quality leather | High heels | 9/10 Condition",
-      "image": "/src/assets/blackheels 1.jpg",
+      "image": "@/assets/blackheels 1.jpg",
       "additionalImages": [
-        "/src/assets/blackheels 2.jpg"
+        "@/assets/blackheels 2.jpg"
       ],
       "isSoldOut": false
     },
@@ -310,10 +310,10 @@
       "color": "Black/Golden",
       "category": "summers",
       "description": "Black high quality leather | heels | 9/10 Condition",
-      "image": "/src/assets/goldsole1.jpg",
+      "image": "@/assets/goldsole1.jpg",
       "additionalImages": [
-        "/src/assets/goldsole2.jpg",
-        "/src/assets/goldsole3.jpg"
+        "@/assets/goldsole2.jpg",
+        "@/assets/goldsole3.jpg"
       ],
       "isSoldOut": false
     },
@@ -328,9 +328,9 @@
       "color": "Light purple",
       "category": "summers",
       "description": "High quality leather | Block heels | 9.5/10 Condition",
-      "image": "/src/assets/lpurple1.jpg",
+      "image": "@/assets/lpurple1.jpg",
       "additionalImages": [
-        "/src/assets/lpurple2.jpg"
+        "@/assets/lpurple2.jpg"
       ],
       "isSoldOut": false
     },
@@ -345,11 +345,11 @@
       "color": "Black/white",
       "category": "summers",
       "description": "Brand New Zebra Pattern | Comfortable heels | 10/10 Condition",
-      "image": "/src/assets/zebra1.jpg",
+      "image": "@/assets/zebra1.jpg",
       "additionalImages": [
-        "/src/assets/zebra2.jpg",
-        "/src/assets/zebra3.jpg",
-        "/src/assets/zebra4.jpg"
+        "@/assets/zebra2.jpg",
+        "@/assets/zebra3.jpg",
+        "@/assets/zebra4.jpg"
       ],
       "isSoldOut": false
     },
@@ -364,10 +364,10 @@
       "color": "Green/Leaf green",
       "category": "formal",
       "description": " Brand New | Formal heels | 10/10 Condition",
-      "image": "/src/assets/greenh1.jpg",
+      "image": "@/assets/greenh1.jpg",
       "additionalImages": [
-        "/src/assets/greenh2.jpg",
-        "/src/assets/greenh3.jpg"
+        "@/assets/greenh2.jpg",
+        "@/assets/greenh3.jpg"
       ],
       "isSoldOut": false
     },
@@ -382,10 +382,10 @@
       "color": "Black/Golden",
       "category": "summers",
       "description": " Comfortable Sole | Small Block heels | 9/10 Condition",
-      "image": "/src/assets/chaing1.jpg",
+      "image": "@/assets/chaing1.jpg",
       "additionalImages": [
-        "/src/assets/chaing2.jpg",
-        "/src/assets/chaing3.jpg"
+        "@/assets/chaing2.jpg",
+        "@/assets/chaing3.jpg"
       ],
       "isSoldOut": false
     },
@@ -400,10 +400,10 @@
       "color": "Shiny Silver/Metallic",
       "category": "formal",
       "description": " Brand New | Formal heels | 10/10 Condition",
-      "image": "/src/assets/CK1.jpg",
+      "image": "@/assets/CK1.jpg",
       "additionalImages": [
-        "/src/assets/CK2.jpg",
-        "/src/assets/CK3.jpg"
+        "@/assets/CK2.jpg",
+        "@/assets/CK3.jpg"
       ],
       "isSoldOut": false
     },
@@ -418,10 +418,10 @@
       "color": "Beige/Golden",
       "category": "formal",
       "description": " Glitter Wedding Formal heels | 9/10 Condition",
-      "image": "/src/assets/shiny1.jpg",
+      "image": "@/assets/shiny1.jpg",
       "additionalImages": [
-        "/src/assets/shiny2.jpg",
-        "/src/assets/shiny3.jpg"
+        "@/assets/shiny2.jpg",
+        "@/assets/shiny3.jpg"
       ],
       "isSoldOut": false
     },
@@ -436,9 +436,9 @@
       "color": "Brown",
       "category": "all seasons",
       "description": " 100% Orignal Leather |  | 9/10 Condition",
-      "image": "/src/assets/brownleather1.jpg",
+      "image": "@/assets/brownleather1.jpg",
       "additionalImages": [
-        "/src/assets/brownleather2.jpg"
+        "@/assets/brownleather2.jpg"
       ],
       "isSoldOut": false
     },
@@ -453,10 +453,10 @@
       "color": "Tea pink",
       "category": "formal",
       "description": " Turkish Heels | Imported | 9.5/10 Condition",
-      "image": "/src/assets/teapink1.jpg",
+      "image": "@/assets/teapink1.jpg",
       "additionalImages": [
-        "/src/assets/teapink2.jpg",
-        "/src/assets/teapink3.jpg"
+        "@/assets/teapink2.jpg",
+        "@/assets/teapink3.jpg"
       ],
       "isSoldOut": false
     },
@@ -471,10 +471,10 @@
       "color": "Golden",
       "category": "formal",
       "description": " Wedding Pencil Heels | 9/10 Condition",
-      "image": "/src/assets/formalgoldh11.jpg",
+      "image": "@/assets/formalgoldh11.jpg",
       "additionalImages": [
-        "/src/assets/formalgoldh12.jpg",
-        "/src/assets/formalgoldh13.jpg"
+        "@/assets/formalgoldh12.jpg",
+        "@/assets/formalgoldh13.jpg"
       ],
       "isSoldOut": false
     },
@@ -489,10 +489,10 @@
       "color": "Golden",
       "category": "formal",
       "description": " Wedding Block Heels | 9/10 Condition",
-      "image": "/src/assets/goldenh21.jpg",
+      "image": "@/assets/goldenh21.jpg",
       "additionalImages": [
-        "/src/assets/goldenh22.jpg",
-        "/src/assets/goldenh23.jpg"
+        "@/assets/goldenh22.jpg",
+        "@/assets/goldenh23.jpg"
       ],
       "isSoldOut": true
     },
@@ -507,10 +507,10 @@
       "color": "Black",
       "category": "all seasons",
       "description": " Imported from USA | 8/10 Condition",
-      "image": "/src/assets/blacktjimax1.jpg",
+      "image": "@/assets/blacktjimax1.jpg",
       "additionalImages": [
-        "/src/assets/blacktjimax2.jpg",
-        "/src/assets/blacktjimax3.jpg"
+        "@/assets/blacktjimax2.jpg",
+        "@/assets/blacktjimax3.jpg"
       ],
       "isSoldOut": false
     },
@@ -525,10 +525,10 @@
       "color": "Black",
       "category": "winters",
       "description": " Imported from Saudi Arabia | Medium Heels | 9.5/10 Condition",
-      "image": "/src/assets/blacksuede1.jpg",
+      "image": "@/assets/blacksuede1.jpg",
       "additionalImages": [
-        "/src/assets/blacksuede2.jpg",
-        "/src/assets/blacksuede3.jpg"
+        "@/assets/blacksuede2.jpg",
+        "@/assets/blacksuede3.jpg"
       ],
       "isSoldOut": true
     },
@@ -543,10 +543,10 @@
       "color": "Brown",
       "category": "winters",
       "description": " Brand New | Imported from Turkey | 10/10 Condition",
-      "image": "/src/assets/brownsuede1.jpg",
+      "image": "@/assets/brownsuede1.jpg",
       "additionalImages": [
-        "/src/assets/brownsuede2.jpg",
-        "/src/assets/brownsuede3.jpg"
+        "@/assets/brownsuede2.jpg",
+        "@/assets/brownsuede3.jpg"
       ],
       "isSoldOut": true
     },
@@ -561,10 +561,10 @@
       "color": "Brown",
       "category": "formal",
       "description": " Brand New | 100% Comfort | Medicated Shoes | 10/10 Condition",
-      "image": "/src/assets/brcoats1.jpg",
+      "image": "@/assets/brcoats1.jpg",
       "additionalImages": [
-        "/src/assets/brcoats2.jpg",
-        "/src/assets/brcoats3.jpg"
+        "@/assets/brcoats2.jpg",
+        "@/assets/brcoats3.jpg"
       ],
       "isSoldOut": true
     },
@@ -579,10 +579,10 @@
       "color": "Nude/Skin",
       "category": "formal",
       "description": " Formal coat shoes | 100% Comfort | Medicated Shoes | 9/10 Condition",
-      "image": "/src/assets/nude1.jpg",
+      "image": "@/assets/nude1.jpg",
       "additionalImages": [
-        "/src/assets/nude2.jpg",
-        "/src/assets/nude3.jpg"
+        "@/assets/nude2.jpg",
+        "@/assets/nude3.jpg"
       ],
       "isSoldOut": false
     },
@@ -597,10 +597,10 @@
       "color": "Maroon",
       "category": "all seasons",
       "description": " Formal shoes | 100% Comfort | Medium heels | 9/10 Condition",
-      "image": "/src/assets/maroon1.jpg",
+      "image": "@/assets/maroon1.jpg",
       "additionalImages": [
-        "/src/assets/maroon2.jpg",
-        "/src/assets/maroon3.jpg"
+        "@/assets/maroon2.jpg",
+        "@/assets/maroon3.jpg"
       ],
       "isSoldOut": false
     },
@@ -615,9 +615,9 @@
       "color": "Copper/Golden",
       "category": "formal",
       "description": " Formal Transparent Medium heels| 10/10 Condition",
-      "image": "/src/assets/coppershine1.jpg",
+      "image": "@/assets/coppershine1.jpg",
       "additionalImages": [
-        "/src/assets/coppershine2.jpg"
+        "@/assets/coppershine2.jpg"
       ],
       "isSoldOut": false
     },
@@ -632,10 +632,10 @@
       "color": "Brown",
       "category": "winters",
       "description": " New Soft furr Orignal suede | 10/10 Condition",
-      "image": "/src/assets/furr1.jpg",
+      "image": "@/assets/furr1.jpg",
       "additionalImages": [
-        "/src/assets/furr2.jpg",
-        "/src/assets/furr3.jpg"
+        "@/assets/furr2.jpg",
+        "@/assets/furr3.jpg"
       ],
       "isSoldOut": true
     },
@@ -650,10 +650,10 @@
       "color": "Dull gold",
       "category": "formal",
       "description": " Dull Gold Heels | 8/10 Condition",
-      "image": "/src/assets/cherrie1.jpg",
+      "image": "@/assets/cherrie1.jpg",
       "additionalImages": [
-        "/src/assets/cherrie2.jpg",
-        "/src/assets/cherrie3.jpg"
+        "@/assets/cherrie2.jpg",
+        "@/assets/cherrie3.jpg"
       ],
       "isSoldOut": false
     },
@@ -668,9 +668,9 @@
       "color": "Black",
       "category": "formal",
       "description": " Brand new with shoe box | Black Orignal Leather | 10/10 Condition",
-      "image": "/src/assets/CK11.jpg",
+      "image": "@/assets/CK11.jpg",
       "additionalImages": [
-        "/src/assets/CK22.jpg"
+        "@/assets/CK22.jpg"
       ],
       "isSoldOut": true
     },
@@ -685,10 +685,10 @@
       "color": "Black",
       "category": "all seasons",
       "description": " Black leather coat shoes | 7/10 Condition",
-      "image": "/src/assets/strapcoat1.jpg",
+      "image": "@/assets/strapcoat1.jpg",
       "additionalImages": [
-        "/src/assets/strapcoat2.jpg",
-        "/src/assets/strapcoat3.jpg"
+        "@/assets/strapcoat2.jpg",
+        "@/assets/strapcoat3.jpg"
       ],
       "isSoldOut": false
     },
@@ -703,9 +703,9 @@
       "color": "Black",
       "category": "winters",
       "description": " Imported | Black Bow shoes | 7/10 Condition",
-      "image": "/src/assets/bow1.jpg",
+      "image": "@/assets/bow1.jpg",
       "additionalImages": [
-        "/src/assets/bow2.jpg"
+        "@/assets/bow2.jpg"
       ],
       "isSoldOut": false
     },
@@ -720,9 +720,9 @@
       "color": "Black",
       "category": "summers",
       "description": " Black leather Sandals | 8/10 Condition",
-      "image": "/src/assets/bsandals1.jpg",
+      "image": "@/assets/bsandals1.jpg",
       "additionalImages": [
-        "/src/assets/bsandals2.jpg"
+        "@/assets/bsandals2.jpg"
       ],
       "isSoldOut": false
     },
@@ -737,10 +737,10 @@
       "color": "Black",
       "category": "all seasons",
       "description": " Orignal Addidas Boost shoes | 9/10 Condition",
-      "image": "/src/assets/addidas1.jpg",
+      "image": "@/assets/addidas1.jpg",
       "additionalImages": [
-        "/src/assets/addidas2.jpg",
-        "/src/assets/addidas3.jpg"
+        "@/assets/addidas2.jpg",
+        "@/assets/addidas3.jpg"
       ],
       "isSoldOut": true
     },
@@ -755,9 +755,9 @@
       "color": "Olive green",
       "category": "all seasons",
       "description": " Olive Green joggers without laces | 8/10 Condition",
-      "image": "/src/assets/olive1.jpg",
+      "image": "@/assets/olive1.jpg",
       "additionalImages": [
-        "/src/assets/olive2.jpg"
+        "@/assets/olive2.jpg"
       ],
       "isSoldOut": false
     },
@@ -772,11 +772,11 @@
       "color": "Silver",
       "category": "formal",
       "description": " Formal Silver Stones flat chappal | 10/10 Condition",
-      "image": "/src/assets/diamond1.jpg",
+      "image": "@/assets/diamond1.jpg",
       "additionalImages": [
-        "/src/assets/diamond2.jpg"
+        "@/assets/diamond2.jpg"
       ],
-      "isSoldOut": false 
+      "isSoldOut": false
     },
     {
       "id": 46,
@@ -789,10 +789,10 @@
       "color": "Maroon",
       "category": "all seasons",
       "description": " Imported | Zara Basic Maroon Shiny Shoes | 8/10 Condition",
-      "image": "/src/assets/zara1.jpg",
+      "image": "@/assets/zara1.jpg",
       "additionalImages": [
-        "/src/assets/zara2.jpg",
-        "/src/assets/zara3.jpg"
+        "@/assets/zara2.jpg",
+        "@/assets/zara3.jpg"
       ],
       "isSoldOut": false
     },
@@ -807,10 +807,10 @@
       "color": "Navy Blue",
       "category": "all seasons",
       "description": " Navy Blue Insignia Coat Shoes | 9/10 Condition",
-      "image": "/src/assets/navy1.jpg",
+      "image": "@/assets/navy1.jpg",
       "additionalImages": [
-        "/src/assets/navy2.jpg",
-        "/src/assets/navy3.jpg"
+        "@/assets/navy2.jpg",
+        "@/assets/navy3.jpg"
       ],
       "isSoldOut": true
     },
@@ -825,9 +825,9 @@
       "color": "Black/Mustard/Maroon/Off-White",
       "category": "summers",
       "description": " Colorful Insignia Sandals | 8/10 Condition",
-      "image": "/src/assets/colors1.jpg",
+      "image": "@/assets/colors1.jpg",
       "additionalImages": [
-        "/src/assets/colors2.jpg"
+        "@/assets/colors2.jpg"
       ],
       "isSoldOut": false
     },
@@ -842,12 +842,12 @@
       "color": "Olive Green /Golden /Black /Cream /Off-White",
       "category": "summers",
       "description": " 100% Comfort | 4 in 1 Deal | Traditional Khussay | 9/10 Condition",
-      "image": "/src/assets/khussay1.jpg",
+      "image": "@/assets/khussay1.jpg",
       "additionalImages": [
-        "/src/assets/khussay2.jpg",
-        "/src/assets/khussay3.jpg",
-        "/src/assets/khussay4.jpg",
-        "/src/assets/khussay5.jpg"
+        "@/assets/khussay2.jpg",
+        "@/assets/khussay3.jpg",
+        "@/assets/khussay4.jpg",
+        "@/assets/khussay5.jpg"
       ],
       "isSoldOut": false
     },
@@ -862,10 +862,10 @@
       "color": "Brown",
       "category": "summers",
       "description": " 100% Comfort and soft Velvet | 9/10 Condition",
-      "image": "/src/assets/brchain1.jpg",
+      "image": "@/assets/brchain1.jpg",
       "additionalImages": [
-        "/src/assets/brchain2.jpg",
-        "/src/assets/brchain3.jpg"
+        "@/assets/brchain2.jpg",
+        "@/assets/brchain3.jpg"
       ],
       "isSoldOut": true
     },
@@ -880,15 +880,15 @@
       "color": "Multi color",
       "category": "summers",
       "description": " 100% Comfort | Handmade Multani Kheri | 8/10 Condition ",
-      "image": "/src/assets/multani1.jpg",
+      "image": "@/assets/multani1.jpg",
       "additionalImages": [
-        "/src/assets/multani2.jpg",
-        "/src/assets/multani3.jpg"
+        "@/assets/multani2.jpg",
+        "@/assets/multani3.jpg"
       ],
       "isSoldOut": false
     }
   ],
   "orders": [
-    
+  
   ]
 }
