@@ -9,10 +9,7 @@ const app = express();
 const port = 3001;
 
 // Middleware
-
-app.use(cors({
-  origin: ['https://your-netlify-site.netlify.app', 'http://localhost:3000']
-}));
+app.use(cors());
 app.use(express.json());
 
 // Configure nodemailer
