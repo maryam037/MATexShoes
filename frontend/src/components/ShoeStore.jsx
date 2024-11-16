@@ -25,7 +25,7 @@ const ShoeStore = () => {
       brand: "Nike",
       price: 2500,
       description: "Classic Nike sneakers in excellent condition",
-      image: "@/assets/shoes/nike-air-max.jpg"
+      image: "/src/assets/shoes/nike-air-max.jpg"
     },
     {
       id: 2,
@@ -33,7 +33,7 @@ const ShoeStore = () => {
       brand: "Vans",
       price: 1800,
       description: "Vintage Vans skateboarding shoes",
-      image: "@/assets/shoes/vans-old-skool.jpg"
+      image: "/src/assets/shoes/vans-old-skool.jpg"
     },
     {
       id: 3,
@@ -41,7 +41,7 @@ const ShoeStore = () => {
       brand: "LC Waikiki",
       price: 900,
       description: "Comfortable casual shoes",
-      image: "@/assets/shoes/lc-waikiki-casual.jpg"
+      image: "/src/assets/shoes/lc-waikiki-casual.jpg"
     }
   ];
 
@@ -67,6 +67,9 @@ const markProductsAsSold = (cartItems) => {
   useEffect(() => {
     const fetchShoes = async () => {
       try {
+        const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+
+fetch(`${API_URL}/api/shoes`)
         const response = await fetch('http://localhost:3001/api/shoes');
         if (!response.ok) {
           throw new Error('Failed to fetch shoes');
@@ -214,7 +217,7 @@ const markProductsAsSold = (cartItems) => {
         playsInline
         className="w-full h-full object-cover"
       >
-        <source src="@/assets/shoesbg.mp4" type="video/mp4" />
+        <source src="/src/assets/shoesbg.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
     </div>
@@ -288,14 +291,14 @@ const markProductsAsSold = (cartItems) => {
         <div className="space-y-4">
           <div className="rounded-lg overflow-hidden shadow-lg transform hover:scale-105 transition-transform duration-300">
             <img 
-              src="@/assets/green1.jpg" 
+              src="/src/assets/green1.jpg" 
               alt="Store Front" 
               className="w-full h-48 object-cover"
             />
           </div>
           <div className="rounded-lg overflow-hidden shadow-lg transform hover:scale-105 transition-transform duration-300">
             <img 
-              src="@/assets/CK1.jpg" 
+              src="/src/assets/CK1.jpg" 
               alt="Premium Shoes" 
               className="w-full h-48 object-contain"
             />
@@ -304,14 +307,14 @@ const markProductsAsSold = (cartItems) => {
         <div className="space-y-4 mt-8">
           <div className="rounded-lg overflow-hidden shadow-lg transform hover:scale-105 transition-transform duration-300">
             <img 
-              src="@/assets/CK11.jpg" 
+              src="/src/assets/CK11.jpg" 
               alt="Luxury Collection" 
               className="w-full h-48 object-contain"
             />
           </div>
           <div className="rounded-lg overflow-hidden shadow-lg transform hover:scale-105 transition-transform duration-300">
             <img 
-              src="@/assets/furr1.jpg" 
+              src="/src/assets/furr1.jpg" 
               alt="Casual Collection" 
               className="w-full h-48 object-cover"
             />
