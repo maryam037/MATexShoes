@@ -47,9 +47,7 @@ const CheckoutPage = ({ cart, onClose, removeFromCart, onViewProduct, markProduc
           price: item.price
         }))
       };
-      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
 
-      fetch(`${API_URL}/api/shoes`)
       const response = await fetch('http://localhost:3001/api/place-order', {
         method: 'POST',
         headers: {

@@ -67,9 +67,6 @@ const markProductsAsSold = (cartItems) => {
   useEffect(() => {
     const fetchShoes = async () => {
       try {
-        const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
-
-fetch(`${API_URL}/api/shoes`)
         const response = await fetch('http://localhost:3001/api/shoes');
         if (!response.ok) {
           throw new Error('Failed to fetch shoes');
