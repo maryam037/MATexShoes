@@ -67,7 +67,7 @@ const markProductsAsSold = (cartItems) => {
   useEffect(() => {
     const fetchShoes = async () => {
       try {
-        const response = await fetch('http://localhost:3001/api/shoes');
+        const response = await fetch('http://localhost:3002/api/shoes');
         if (!response.ok) {
           throw new Error('Failed to fetch shoes');
         }

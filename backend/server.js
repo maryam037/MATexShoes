@@ -6,7 +6,7 @@ const jsonServer = require('json-server');
 const fs = require('fs');
 const nodemailer = require('nodemailer');
 const app = express();
-const port = 3001;
+const port = 3002;
 
 // Middleware
 app.use(cors());
