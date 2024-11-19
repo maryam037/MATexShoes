@@ -64,26 +64,30 @@ const markProductsAsSold = (cartItems) => {
   );
   setCart([]); // Clear the cart
 };
-  useEffect(() => {
-    const fetchShoes = async () => {
-      try {
-        console.log('Attempting to fetch shoes...'); // Add logging
-        const response = await fetch('http://localhost:3001/api/shoes'); // Use 3001
-        
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        
-        const data = await response.json();
-        console.log('Fetched shoes:', data); // Log fetched data
-        setShoes(data);
-      } catch (error) {
-        console.error('Detailed fetch error:', error);
+useEffect(() => {
+  const fetchShoes = async () => {
+    try {
+      const response = await fetch('http://localhost:3001/api/shoes');
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
-    };
+      
+      const data = await response.json();
+      console.log('Fetched shoes:', data.map(shoe => ({
+        id: shoe.id,
+        imagePath: shoe.image,
+        additionalImages: shoe.additionalImages
+      })));
+      
+      setShoes(data);
+    } catch (error) {
+      console.error('Detailed fetch error:', error);
+    }
+  };
 
-    fetchShoes();
-  }, []);
+  fetchShoes();
+}, []);
 
   // Rest of your existing functions...
   const scrollToCollection = () => {
@@ -365,7 +369,7 @@ const markProductsAsSold = (cartItems) => {
           <div className="relative">
             <CardHeader className="p-0">
               <img 
-                src={shoe.image} 
+                src={`http://localhost:3001${shoe.image.replace('/src/assets', '/assets')}`}
                 alt={shoe.name} 
                 className={`w-full h-48 object-contain group-hover:scale-105 transition-transform duration-300 ${
                   isSoldOut(shoe.id) ? 'opacity-100' : ''

@@ -9,29 +9,34 @@ const FeaturedShoes = ({ onAddToCart, onViewProduct, selectedcateg, priceRange }
   useEffect(() => {
     const fetchShoes = async () => {
       try {
-        console.log('Attempting to fetch shoes...'); // Add logging
-        const response = await fetch('http://localhost:3001/api/shoes'); // Use 3001
+        const response = await fetch('http://localhost:3001/api/shoes');
         
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         
         const data = await response.json();
-        console.log('Fetched shoes:', data); // Log fetched data
+        console.log('Fetched shoes:', data.map(shoe => ({
+          id: shoe.id,
+          imagePath: shoe.image.replace('/src/assets', '/assets'), // Transform path here
+          additionalImages: shoe.additionalImages.map(img => 
+            img.replace('/src/assets', '/assets') // Transform additional images
+          )
+        })));
+        
         setShoes(data);
       } catch (error) {
         console.error('Detailed fetch error:', error);
       }
     };
-
+  
     fetchShoes();
   }, []);
-  
   const featuredIds = [49,3,6,20,27,45,38,24,36,26,17,45,27,9];
   const isSoldOut = (shoe) => shoe.isSoldOut;
 
   const filteredShoes = shoes.filter(shoe => {
-    const isFeatured = featuredIds.includes(shoe._id);  // Assuming MongoDB uses _id for unique identifier
+    const isFeatured = featuredIds.includes(shoe.id);  // Assuming MongoDB uses _id for unique identifier
     const categMatch = selectedcateg === 'All' || shoe.category === selectedcateg;
     const priceMatch =
       priceRange === 'All' ||
@@ -58,11 +63,13 @@ const FeaturedShoes = ({ onAddToCart, onViewProduct, selectedcateg, priceRange }
           {filteredShoes.map((shoe) => (
             <Card key={shoe._id} className="group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden">
               <CardHeader className="p-0">
-                <img 
-                  src={shoe.image} 
-                  alt={shoe.name} 
-                  className={`w-full h-48 object-contain group-hover:scale-105 transition-transform duration-300 ${isSoldOut(shoe) ? 'opacity-50' : ''}`}
-                />
+              <img 
+   src={`http://localhost:3001${shoe.image.replace('/src/assets', '/assets')}`}
+   alt={shoe.name} 
+   className={`w-full h-48 object-contain group-hover:scale-105 transition-transform duration-300 ${
+     isSoldOut(shoe) ? 'opacity-100' : ''
+   }`}
+/>
                 {isSoldOut(shoe) && (
                   <div className="absolute top-2 right-2">
                     <span className="bg-red-500 text-white px-3 py-1 rounded-full text-sm">

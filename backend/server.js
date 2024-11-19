@@ -14,13 +14,8 @@ const port = process.env.PORT || 3001;
 // Middleware
 app.use(cors());
 app.use(express.json());
+app.use('/assets', express.static(path.join(__dirname, '..', 'frontend', 'src', 'assets')));
 
-
-
-// Serve static files from frontend assets
-app.use('/assets', express.static(
-  path.join(__dirname, '..', 'frontend', 'src', 'assets')
-));
 mongoose.connect(process.env.MONGO_URI, {
   // Remove deprecated options completely
 })
@@ -44,25 +39,29 @@ transporter.verify(function(error, success) {
 });
 
 // Endpoint to get all shoes
+// In server.js, modify the /api/shoes endpoint
 app.get('/api/shoes', async (req, res) => {
   try {
     const shoes = await Shoe.find();
     
-    // Transform image paths to be served from the server
-    const transformedShoes = shoes.map(shoe => ({
-      ...shoe.toObject(),
-      image: shoe.image.replace('/src/assets/', '/assets/'),
-      additionalImages: shoe.additionalImages.map(img => 
-        img.replace('/src/assets/', '/assets/')
-      )
-    }));
+    const transformedShoes = shoes.map(shoe => {
+      console.log('Original Image Path:', shoe.image);
+      console.log('Transformed Image Path:', shoe.image.replace('/src/assets/', '/assets/'));
+      
+      return {
+        ...shoe.toObject(),
+        image: shoe.image.replace('/src/assets/', '/assets/'),
+        additionalImages: shoe.additionalImages.map(img => 
+          img.replace('/src/assets/', '/assets/')
+        )
+      };
+    });
 
     res.json(transformedShoes);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 });
-
 // Place order endpoint
 app.post('/api/place-order', async (req, res) => {
   try {

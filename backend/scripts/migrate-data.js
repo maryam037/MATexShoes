@@ -24,10 +24,9 @@ mongoose.connect(process.env.MONGO_URI, {
     await Shoe.deleteMany({});
 
     // Insert shoes with modified paths
-    const shoesToInsert = data.shoes.map(shoe => ({
+    const transformedShoes = shoes.map(shoe => ({
       ...shoe,
-      // Convert frontend asset paths to server-compatible paths
-      image: shoe.image.replace('/src/assets/', '/assets/'),
+      image: shoe.image.replace('/src/assets', '/assets'),
       additionalImages: shoe.additionalImages.map(img => 
         img.replace('/src/assets/', '/assets/')
       )

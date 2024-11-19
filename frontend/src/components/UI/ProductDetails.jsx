@@ -43,7 +43,10 @@ const ProductDetails = ({ shoe, shoes, onGoBack, onAddToCart, onCheckoutPage, on
   };
 
   const getImages = () => {
-    return [shoe.image || "/api/placeholder/400/300", ...(shoe.additionalImages || [])];
+    return [
+      `http://localhost:3001${shoe.image.replace('/src/assets', '/assets')}` || "/api/placeholder/400/300", 
+      ...(shoe.additionalImages || []).map(img => `http://localhost:3001${img.replace('/src/assets', '/assets')}`)
+    ];
   };
 
   const images = getImages();
@@ -141,23 +144,23 @@ const ProductDetails = ({ shoe, shoes, onGoBack, onAddToCart, onCheckoutPage, on
                   </div>
 
                   <div className="flex gap-4 justify-center mt-4">
-                    {images.map((img, index) => (
-                      <button
-                        key={index}
-                        onClick={() => setSelectedImage(index)}
-                        className={`relative w-24 h-24 rounded-lg overflow-hidden ${
-                          selectedImage === index 
-                            ? 'ring-2 ring-teal-500 ring-offset-2' 
-                            : 'hover:opacity-75'
-                        } ${isSoldOut() ? 'opacity-100' : ''}`}
-                      >
-                        <img
-                          src={img}
-                          alt={`${shoe.name} - Thumbnail ${index + 1}`}
-                          className="w-full h-full object-contain"
-                        />
-                      </button>
-                    ))}
+                  {images.map((img, index) => (
+  <button
+    key={index}
+    onClick={() => setSelectedImage(index)}
+    className={`relative w-24 h-24 rounded-lg overflow-hidden ${
+      selectedImage === index 
+        ? 'ring-2 ring-teal-500 ring-offset-2' 
+        : 'hover:opacity-75'
+    } ${isSoldOut() ? 'opacity-100' : ''}`}
+  >
+    <img
+      src={img}
+      alt={`${shoe.name} - Thumbnail ${index + 1}`}
+      className="w-full h-full object-contain"
+    />
+  </button>
+))}
                   </div>
                 </div>
 
