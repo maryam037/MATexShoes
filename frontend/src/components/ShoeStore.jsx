@@ -67,16 +67,18 @@ const markProductsAsSold = (cartItems) => {
   useEffect(() => {
     const fetchShoes = async () => {
       try {
-        const response = await fetch('http://localhost:3001/api/shoes');
+        console.log('Attempting to fetch shoes...'); // Add logging
+        const response = await fetch('http://localhost:3001/api/shoes'); // Use 3001
+        
         if (!response.ok) {
-          throw new Error('Failed to fetch shoes');
+          throw new Error(`HTTP error! status: ${response.status}`);
         }
+        
         const data = await response.json();
+        console.log('Fetched shoes:', data); // Log fetched data
         setShoes(data);
       } catch (error) {
-        console.error('Failed to fetch shoes:', error);
-        // Keep using sample data if fetch fails
-        setShoes(sampleShoes);
+        console.error('Detailed fetch error:', error);
       }
     };
 

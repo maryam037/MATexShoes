@@ -1,46 +1,31 @@
-// your file
-//const express = require('express');
-//const mongoose = require('mongoose');
-//const cors = require('cors');
-//require('dotenv').config();
-//const productRoutes = require('./routes/products');
-
-//const app = express();
-//app.use(express.json());
-//app.use(cors());
-//app.use('/api/products', productRoutes);
-
-// MongoDB Connection
-//mongoose.connect(process.env.MONGO_URI, {
- //   useNewUrlParser: true,
- //   useUnifiedTopology: true,
-//}).then(() => console.log('MongoDB connected'))
-//  .catch(err => console.error('MongoDB connection error:', err));
-
-// Start Server
-//const PORT = process.env.PORT || 5000;
-//app.listen(PORT, () => {
-//    console.log(`Server running on port ${PORT}`);
-//});
-
-
-// backend/server.js my file
-
-
-
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
-const jsonServer = require('json-server');
-const fs = require('fs');
+const mongoose = require('mongoose');
 const nodemailer = require('nodemailer');
+const path = require('path');
+
+const Shoe = require('./models/Shoe');
+const Order = require('./models/Order');
+
 const app = express();
-const port = 3001;
+const port = process.env.PORT || 3001; 
 
 // Middleware
 app.use(cors());
 app.use(express.json());
 
+
+
+// Serve static files from frontend assets
+app.use('/assets', express.static(
+  path.join(__dirname, '..', 'frontend', 'src', 'assets')
+));
+mongoose.connect(process.env.MONGO_URI, {
+  // Remove deprecated options completely
+})
+.then(() => console.log('MongoDB connected'))
+.catch(err => console.error('MongoDB connection error:', err));
 // Configure nodemailer
 const transporter = nodemailer.createTransport({
   service: 'gmail',
@@ -58,6 +43,27 @@ transporter.verify(function(error, success) {
   }
 });
 
+// Endpoint to get all shoes
+app.get('/api/shoes', async (req, res) => {
+  try {
+    const shoes = await Shoe.find();
+    
+    // Transform image paths to be served from the server
+    const transformedShoes = shoes.map(shoe => ({
+      ...shoe.toObject(),
+      image: shoe.image.replace('/src/assets/', '/assets/'),
+      additionalImages: shoe.additionalImages.map(img => 
+        img.replace('/src/assets/', '/assets/')
+      )
+    }));
+
+    res.json(transformedShoes);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+// Place order endpoint
 app.post('/api/place-order', async (req, res) => {
   try {
     console.log('Received order request:', req.body);
@@ -70,87 +76,74 @@ app.post('/api/place-order', async (req, res) => {
       });
     }
 
-    // Send email first
+    // Update shoes to sold out
+    await Shoe.updateMany(
+      { id: { $in: soldProducts } },
+      { $set: { isSoldOut: true } }
+    );
+
+    // Create new order
+    const newOrder = new Order({
+      ...orderDetails,
+      id: Date.now(),
+      orderDate: new Date()
+    });
+    await newOrder.save();
+
+    // Send email
     try {
-      console.log('Attempting to send email...');
+      const mailOptions = {
+        from: process.env.EMAIL_USER,
+        to: 'matexshoes@gmail.com',
+        subject: 'New Order Received - MATex Shoes',
+        html: `
+          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+            <h1 style="color: #2dd4bf;">New Order Received!</h1>
+            
+            <div style="background-color: #f3f4f6; padding: 20px; border-radius: 8px; margin: 20px 0;">
+              <h2>Customer Details</h2>
+              <p><strong>Name:</strong> ${orderDetails.name}</p>
+              <p><strong>Email:</strong> ${orderDetails.email}</p>
+              <p><strong>Phone:</strong> ${orderDetails.phone}</p>
+              <p><strong>Address:</strong> ${orderDetails.address}</p>
+              <p><strong>City:</strong> ${orderDetails.city}</p>
+              <p><strong>Additional Notes:</strong> ${orderDetails.notes || 'None'}</p>
+            </div>
 
-// In server.js
-const mailOptions = {
-  from: process.env.EMAIL_USER,
-  to: 'matexshoes@gmail.com',
-  subject: 'New Order Received - MATex Shoes',
-  html: `
-    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-      <h1 style="color: #2dd4bf;">New Order Received!</h1>
-      
-      <div style="background-color: #f3f4f6; padding: 20px; border-radius: 8px; margin: 20px 0;">
-        <h2>Customer Details</h2>
-        <p><strong>Name:</strong> ${orderDetails.name}</p>
-        <p><strong>Email:</strong> ${orderDetails.email}</p>
-        <p><strong>Phone:</strong> ${orderDetails.phone}</p>
-        <p><strong>Address:</strong> ${orderDetails.address}</p>
-        <p><strong>City:</strong> ${orderDetails.city}</p>
-        <p><strong>Additional Notes:</strong> ${orderDetails.notes || 'None'}</p>
-      </div>
-
-      <div style="background-color: #f3f4f6; padding: 20px; border-radius: 8px; margin: 20px 0;">
-        <h2>Ordered Items</h2>
-        <table style="width: 100%; border-collapse: collapse;">
-          <thead>
-            <tr style="background-color: #e5e7eb;">
-              <th style="padding: 12px; text-align: left; border-bottom: 2px solid #cbd5e1;">Shoe ID</th>
-              <th style="padding: 12px; text-align: left; border-bottom: 2px solid #cbd5e1;">Name</th>
-              <th style="padding: 12px; text-align: right; border-bottom: 2px solid #cbd5e1;">Price</th>
-            </tr>
-          </thead>
-          <tbody>
-            ${orderDetails.items.map(item => `
-              <tr style="border-bottom: 1px solid #e5e7eb;">
-                <td style="padding: 12px;">${item.id}</td>
-                <td style="padding: 12px;">${item.name}</td>
-                <td style="padding: 12px; text-align: right;">Rs. ${item.price}</td>
-              </tr>
-            `).join('')}
-          </tbody>
-        </table>
-        <h2>Order Summary</h2>
-        <p><strong>Total Amount:</strong> Rs. ${orderDetails.total}</p>
-        <p><strong>Payment Method:</strong> ${orderDetails.paymentMethod}</p>
-      </div>
-  `
-};
+            <div style="background-color: #f3f4f6; padding: 20px; border-radius: 8px; margin: 20px 0;">
+              <h2>Ordered Items</h2>
+              <table style="width: 100%; border-collapse: collapse;">
+                <thead>
+                  <tr style="background-color: #e5e7eb;">
+                    <th style="padding: 12px; text-align: left; border-bottom: 2px solid #cbd5e1;">Shoe ID</th>
+                    <th style="padding: 12px; text-align: left; border-bottom: 2px solid #cbd5e1;">Name</th>
+                    <th style="padding: 12px; text-align: right; border-bottom: 2px solid #cbd5e1;">Price</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${orderDetails.items.map(item => `
+                    <tr style="border-bottom: 1px solid #e5e7eb;">
+                      <td style="padding: 12px;">${item.id}</td>
+                      <td style="padding: 12px;">${item.name}</td>
+                      <td style="padding: 12px; text-align: right;">Rs. ${item.price}</td>
+                    </tr>
+                  `).join('')}
+                </tbody>
+              </table>
+              <h2>Order Summary</h2>
+              <p><strong>Total Amount:</strong> Rs. ${orderDetails.total}</p>
+              <p><strong>Payment Method:</strong> ${orderDetails.paymentMethod}</p>
+            </div>
+          </div>
+        `
+      };
 
       const info = await transporter.sendMail(mailOptions);
       console.log('Email sent successfully:', info);
 
     } catch (emailError) {
       console.error('Email error:', emailError);
-      // Continue with order processing even if email fails
     }
-
-    // Then update database
-    const dbPath = './db.json';
-    const db = JSON.parse(fs.readFileSync(dbPath, 'utf8'));
-    
-    db.shoes = db.shoes.map(shoe => ({
-      ...shoe,
-      isSoldOut: soldProducts.includes(shoe.id) ? true : shoe.isSoldOut
-    }));
-
-    if (!db.orders) {
-      db.orders = [];
-    }
-
-    const newOrder = {
-      id: Date.now(),
-      orderDate: new Date().toISOString(),
-      ...orderDetails
-    };
-
-    db.orders.push(newOrder);
-
-    // Save updated database
-    fs.writeFileSync(dbPath, JSON.stringify(db, null, 2));
 
     res.json({ 
       success: true, 
@@ -167,11 +160,8 @@ const mailOptions = {
     });
   }
 });
-// JSON Server setup - This should come AFTER your custom routes
-const router = jsonServer.router('./db.json');
-app.use('/api', router);
 
 // Start server
-app.listen(port, () => {
+app.listen(port, '0.0.0.0', () => {  // Bind to all network interfaces
   console.log(`Server is running on port ${port}`);
 });

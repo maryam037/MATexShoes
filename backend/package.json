@@ -4,17 +4,20 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "dev": "nodemon --ignore 'db.json' server.js",
-    "start": "node server.js"
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "migrate": "node scripts/migrate-data.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
-    "dotenv": "^16.0.3",
+    "dotenv": "^16.4.5",
     "express": "^4.21.1",
+    "fs-extra": "^11.2.0",
     "json-server": "^0.17.4",
+    "mongoose": "^8.8.2",
     "nodemailer": "^6.9.16"
   },
   "devDependencies": {

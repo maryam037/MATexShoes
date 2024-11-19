@@ -7,16 +7,23 @@ const FeaturedShoes = ({ onAddToCart, onViewProduct, selectedcateg, priceRange }
   const [shoes, setShoes] = useState([]);
   
   useEffect(() => {
-    // Fetch shoes data from the backend
     const fetchShoes = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/products');  // Replace with your actual backend URL
+        console.log('Attempting to fetch shoes...'); // Add logging
+        const response = await fetch('http://localhost:3001/api/shoes'); // Use 3001
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
         const data = await response.json();
+        console.log('Fetched shoes:', data); // Log fetched data
         setShoes(data);
       } catch (error) {
-        console.error('Error fetching shoes:', error);
+        console.error('Detailed fetch error:', error);
       }
     };
+
     fetchShoes();
   }, []);
   
