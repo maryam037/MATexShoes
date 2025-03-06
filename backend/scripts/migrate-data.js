@@ -23,16 +23,9 @@ mongoose.connect(process.env.MONGO_URI, {
     // Clear existing shoes
     await Shoe.deleteMany({});
 
-    // Insert shoes with modified paths
-    const transformedShoes = shoes.map(shoe => ({
-      ...shoe,
-      image: shoe.image.replace('/src/assets', '/assets'),
-      additionalImages: shoe.additionalImages.map(img => 
-        img.replace('/src/assets/', '/assets/')
-      )
-    }));
+    // Insert shoes without modifying paths
+    const result = await Shoe.insertMany(data.shoes);
 
-    const result = await Shoe.insertMany(shoesToInsert);
     console.log(`Successfully inserted ${result.length} shoes`);
   } catch (insertError) {
     console.error('Error during insertion:', insertError);

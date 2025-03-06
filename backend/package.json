@@ -13,11 +13,11 @@
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
-    "dotenv": "^16.4.5",
+    "dotenv": "^16.4.7",
     "express": "^4.21.1",
     "fs-extra": "^11.2.0",
     "json-server": "^0.17.4",
-    "mongoose": "^8.8.2",
+    "mongoose": "^8.12.1",
     "nodemailer": "^6.9.16"
   },
   "devDependencies": {

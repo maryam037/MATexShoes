@@ -53,7 +53,7 @@ const ShoeStore = () => {
   const mainRef = useRef(null);
   const [showCheckout, setShowCheckout] = useState(false);
   const [shoes, setShoes] = useState(sampleShoes);
-
+  const [showDuplicateAlert, setShowDuplicateAlert] = useState(false);
 // In ShoeStore.jsx
 const markProductsAsSold = (cartItems) => {
   setShoes(prevShoes => 
@@ -97,7 +97,12 @@ useEffect(() => {
   };
 
   const addToCart = (shoe) => {
-    setCart(prevCart => [...prevCart, { ...shoe, cartId: Date.now() }]);
+    const alreadyInCart = cart.some(item => item.id === shoe.id);
+    if (!alreadyInCart) {
+      setCart(prevCart => [...prevCart, { ...shoe, cartId: Date.now() }]);
+    } else {
+      setShowDuplicateAlert(true);  // ← Changed from alert()
+    }
   };
 
   const removeFromCart = (cartId) => {
@@ -124,7 +129,8 @@ useEffect(() => {
 
   const isSoldOut = (shoeId) => {
     const shoe = shoes.find(s => s.id === shoeId);
-    return shoe?.isSoldOut || [8, 12, 13, 14, 15, 21, 23].includes(shoeId);
+    const inCart = cart.some(item => item.id === shoeId);
+    return shoe?.isSoldOut || [8, 12, 13, 14, 15, 21, 23].includes(shoeId) || inCart;
   };
   // Updated filtering logic to handle empty data
   const filteredShoes = shoes.filter(shoe => {
@@ -210,40 +216,71 @@ useEffect(() => {
   // Rest of your content
 
         <>
-  <section className="relative h-screen flex items-center justify-center overflow-hidden">
-    {/* Background Video */}
-    <div className="absolute inset-0 z-0">
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="w-full h-full object-cover"
-      >
-        <source src="/src/assets/shoesbg.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+<section className="relative h-screen flex items-center justify-center overflow-hidden">
+    {/* Background Image with animation */}
+    <div className="absolute right-0 top-0 bottom-0 w-1/2 z-0 overflow-hidden">
+      <img
+        src="/src/assets/matexshoeslogo1.png"
+        className="w-full h-full object-cover animate-slide-in-right"
+        alt="Background"
+      />
     </div>
 
-    {/* Overlay */}
-    <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-black/30 z-10" />
-
-    {/* Content */}
-    <div className="relative z-20 max-w-5xl mx-auto flex flex-col items-center mt-12 text-center text-white">
-      
-      <h1 className="text-6xl font-bold bg-gradient-to-r from-teal-500 to-pink-500 bg-clip-text text-transparent mb-8">
+    {/* Content with staggered animations */}
+    <div className="relative z-20 max-w-5xl ml-8 mr-auto flex flex-col items-start text-left">
+      <h1 className="text-6xl font-bold bg-gradient-to-r from-teal-500 to-pink-500 bg-clip-text text-transparent mb-8 animate-fade-in delay-100">
         MATex <span className="font-black">SHOES</span>
       </h1>
 
-      <p className="text-xl md:text-2xl mb-12 max-w-2xl mx-auto font-bold bg-gradient-to-r from-teal-400 to-teal-800 bg-clip-text text-transparent">
-        Discover a world of style with pre-loved, high-quality shoes For Women </p>
+      <p className="text-xl md:text-2xl mb-12 max-w-2xl font-bold bg-gradient-to-r from-teal-400 to-teal-800 bg-clip-text text-transparent animate-fade-in delay-300">
+        Discover a world of style with pre-loved, high-quality shoes For Women
+      </p>
 
       <button onClick={scrollToCollection} className="px-6 py-3 rounded-lg text-white font-medium transition-all duration-300 
-    bg-gradient-to-r from-teal-500 to-pink-500 hover:from-teal-600 hover:to-pink-600 transform hover:-translate-y-1">
-              Shop Now
-            </button>
+    bg-gradient-to-r from-teal-500 to-pink-500 hover:from-teal-600 hover:to-pink-600 transform hover:-translate-y-1 animate-fade-in delay-500">
+        Shop Now
+      </button>
     </div>
-  </section>
+
+    <style jsx global>{`
+      @keyframes slideInFromRight {
+        from {
+          transform: translateX(100%);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .animate-slide-in-right {
+        animation: slideInFromRight 1s ease-out forwards;
+      }
+      .animate-fade-in {
+        animation: fadeIn 0.8s ease-out forwards;
+      }
+      .delay-100 {
+        animation-delay: 100ms;
+      }
+      .delay-300 {
+        animation-delay: 300ms;
+      }
+      .delay-500 {
+        animation-delay: 500ms;
+      }
+    `}</style>
+</section>
+ 
   
 <section className="py-16 bg-white">
   <div className="max-w-6xl mx-auto px-4">
@@ -417,7 +454,7 @@ useEffect(() => {
                       : 'bg-black text-white hover:bg-gray-800'
                   }`}
                 >
-                  Add to Cart
+                 {isSoldOut(shoe.id) ? 'Unavailable' : 'Add to Cart'}
                 </button>
               </AlertDialogTrigger>
               <AlertDialogContent>
@@ -530,6 +567,7 @@ const CartDialog = ({ cart, removeFromCart, calculateTotal, onCheckoutPage }) =>
   return (
     <AlertDialog>
       <AlertDialogTrigger>
+        
         <div className="relative text-white cursor-pointer">
           <ShoppingCart size={24} />
           {cart.length > 0 && (
@@ -549,7 +587,7 @@ const CartDialog = ({ cart, removeFromCart, calculateTotal, onCheckoutPage }) =>
               <ul className="mt-2">
                 {cart.map(item => (
                   <li key={item.cartId} className="flex justify-between items-center border-b border-gray-700 py-2">
-                    <span className="text-black">{item.name}</span>
+                   <span className="text-black">{item.name} {cart.some(cItem => cItem.id === item.id) && "(In Cart)"}</span>
                     <span className="text-black">{item.price} PKR</span>
                     <button
                       onClick={() => removeFromCart(item.cartId)}
@@ -577,6 +615,7 @@ const CartDialog = ({ cart, removeFromCart, calculateTotal, onCheckoutPage }) =>
                 Proceed to Checkout
               </AlertDialogAction>
             )}
+            
           </div>
         </AlertDialogFooter>
       </AlertDialogContent>
